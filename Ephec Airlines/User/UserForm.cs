@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace User
 {
-    public partial class userFormTitle : Form
+    public partial class userFormSelect : Form
     {
-        public userFormTitle()
+        public userFormSelect()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void userFormSelect_Load(object sender, EventArgs e)
         {
-
+            MessageBox.Show("coucou");
         }
     }
 }

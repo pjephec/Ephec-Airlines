@@ -16,7 +16,7 @@ namespace User
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new userFormTitle());
+            Application.Run(new userFormSelect());
         }
     }
 }
