@@ -63,9 +63,9 @@
             // 
             // txtClientName
             // 
-            this.txtClientName.Enabled = false;
             this.txtClientName.Location = new System.Drawing.Point(147, 89);
             this.txtClientName.Name = "txtClientName";
+            this.txtClientName.ReadOnly = true;
             this.txtClientName.Size = new System.Drawing.Size(121, 20);
             this.txtClientName.TabIndex = 4;
             // 
