@@ -1,6 +1,6 @@
 ﻿namespace User
 {
-    partial class userFormSelect
+    partial class UserFormSelect
     {
         /// <summary>
         /// Required designer variable.
@@ -42,6 +42,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // lblSelectClient
             // 
@@ -77,8 +78,9 @@
             this.btnSelect.TabIndex = 5;
             this.btnSelect.Text = "Sélectionner";
             this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
-            // userFormSelect
+            // UserFormSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -89,7 +91,7 @@
             this.Controls.Add(this.lblSelectClient);
             this.Controls.Add(this.comboBox1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Name = "userFormSelect";
+            this.Name = "UserFormSelect";
             this.Text = "Sélectionner client";
             this.Load += new System.EventHandler(this.userFormSelect_Load);
             this.ResumeLayout(false);

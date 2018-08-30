@@ -4,12 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BL
-{
-    class Program
+namespace DataAccessLayer {
+    public class DALAllerRetours
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }

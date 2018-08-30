@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="87915dbdee1440ab8242764e63094f52" Name="Diagram1">
+        <EntityTypeShape EntityType="AirlinesModel.Accompagnateur" Width="1.5" PointX="9.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlinesModel.AllerRetour" Width="1.5" PointX="9.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlinesModel.Client" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlinesModel.Planning" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlinesModel.Reservation" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlinesModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlinesModel.Tranche" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlinesModel.Ville" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlinesModel.Vol" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="AirlinesModel.FK_Accompagnateur_Reservation" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlinesModel.FK_ALLERRETOUR_RESERVATION_RETOUR" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlinesModel.FK_AllerRetour_Reservation1" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlinesModel.FK_Reservation_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlinesModel.FK_Planning_Vol2" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlinesModel.FK_Reservation_Planning2" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlinesModel.FK_Tranche_Vol" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlinesModel.FK_Vol_Ville_Arrivee" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlinesModel.FK_Vol_Ville_Depart" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

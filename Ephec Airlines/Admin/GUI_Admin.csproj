@@ -79,5 +79,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BL\BusinessLayer.csproj">
+      <Project>{1ace2cc4-081a-4c2a-be76-5a10cb615270}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Exceptions\BusinessErrors.csproj">
+      <Project>{75b04502-9bf6-467a-a071-9b2ebe176846}</Project>
+      <Name>BusinessErrors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{F3D824F1-0EC8-4320-9C2E-729912D87808}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

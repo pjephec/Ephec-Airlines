@@ -10,8 +10,8 @@ namespace Connection
 {
     public sealed class Connect
     { 
-        private const string CLIENT_CONNECTION_STRING = "Data Source=(local);Initial Catalog=Airlines;User ID=clientAirline;Password= ;";
-        private const string ADMIN_CONNECTION_STRING = "Data Source=(local);Initial Catalog=Airlines;User ID=adminAirline;Password= ;";
+        private const string CLIENT_CONNECTION_STRING = "Data Source=(local);Initial Catalog=Airlines;User ID=clientAirline;Password=pw;";
+        private const string ADMIN_CONNECTION_STRING = "Data Source=(local);Initial Catalog=Airlines;User ID=adminAirline;Password=pw;";
 
         private static SqlConnection ConnectAdmin;
         private static SqlConnection ConnectClient;

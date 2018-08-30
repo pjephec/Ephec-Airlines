@@ -30,8 +30,6 @@
         {
             this.tabsAdmin = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
-            this.lblPrixGeneralDetails = new System.Windows.Forms.Label();
-            this.lblVolsGeneralDetails = new System.Windows.Forms.Label();
             this.cmbTranchePrix = new System.Windows.Forms.ComboBox();
             this.txtVolsInput = new System.Windows.Forms.TextBox();
             this.btnFiltreVols = new System.Windows.Forms.Button();
@@ -40,6 +38,7 @@
             this.lblVols = new System.Windows.Forms.Label();
             this.dataGridViewVols = new System.Windows.Forms.DataGridView();
             this.tabDetails = new System.Windows.Forms.TabPage();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.dataGridViewCA = new System.Windows.Forms.DataGridView();
             this.dataGridViewPassagers = new System.Windows.Forms.DataGridView();
             this.lblCADetails = new System.Windows.Forms.Label();
@@ -56,7 +55,6 @@
             this.lblNbPassagers = new System.Windows.Forms.Label();
             this.lblDateVolDetails = new System.Windows.Forms.Label();
             this.lblVolDetails = new System.Windows.Forms.Label();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.tabsAdmin.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrix)).BeginInit();
@@ -80,8 +78,6 @@
             // tabGeneral
             // 
             this.tabGeneral.BackColor = System.Drawing.SystemColors.Control;
-            this.tabGeneral.Controls.Add(this.lblPrixGeneralDetails);
-            this.tabGeneral.Controls.Add(this.lblVolsGeneralDetails);
             this.tabGeneral.Controls.Add(this.cmbTranchePrix);
             this.tabGeneral.Controls.Add(this.txtVolsInput);
             this.tabGeneral.Controls.Add(this.btnFiltreVols);
@@ -96,24 +92,6 @@
             this.tabGeneral.TabIndex = 0;
             this.tabGeneral.Text = "Général";
             // 
-            // lblPrixGeneralDetails
-            // 
-            this.lblPrixGeneralDetails.AutoSize = true;
-            this.lblPrixGeneralDetails.Location = new System.Drawing.Point(287, 296);
-            this.lblPrixGeneralDetails.Name = "lblPrixGeneralDetails";
-            this.lblPrixGeneralDetails.Size = new System.Drawing.Size(160, 13);
-            this.lblPrixGeneralDetails.TabIndex = 8;
-            this.lblPrixGeneralDetails.Text = "(Afficher les tranches et leur prix)";
-            // 
-            // lblVolsGeneralDetails
-            // 
-            this.lblVolsGeneralDetails.AutoSize = true;
-            this.lblVolsGeneralDetails.Location = new System.Drawing.Point(389, 23);
-            this.lblVolsGeneralDetails.Name = "lblVolsGeneralDetails";
-            this.lblVolsGeneralDetails.Size = new System.Drawing.Size(110, 13);
-            this.lblVolsGeneralDetails.TabIndex = 7;
-            this.lblVolsGeneralDetails.Text = "(Afficher tous les vols)";
-            // 
             // cmbTranchePrix
             // 
             this.cmbTranchePrix.FormattingEnabled = true;
@@ -121,6 +99,7 @@
             this.cmbTranchePrix.Name = "cmbTranchePrix";
             this.cmbTranchePrix.Size = new System.Drawing.Size(145, 21);
             this.cmbTranchePrix.TabIndex = 6;
+            this.cmbTranchePrix.SelectedIndexChanged += new System.EventHandler(this.cmbTranchePrix_SelectedIndexChanged);
             // 
             // txtVolsInput
             // 
@@ -137,12 +116,14 @@
             this.btnFiltreVols.TabIndex = 4;
             this.btnFiltreVols.Text = "Filtrer";
             this.btnFiltreVols.UseVisualStyleBackColor = true;
+            this.btnFiltreVols.Click += new System.EventHandler(this.btnFiltreVols_Click);
             // 
             // dataGridViewPrix
             // 
             this.dataGridViewPrix.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPrix.Location = new System.Drawing.Point(50, 328);
             this.dataGridViewPrix.Name = "dataGridViewPrix";
+            this.dataGridViewPrix.ReadOnly = true;
             this.dataGridViewPrix.Size = new System.Drawing.Size(817, 217);
             this.dataGridViewPrix.TabIndex = 3;
             // 
@@ -171,6 +152,7 @@
             this.dataGridViewVols.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewVols.Location = new System.Drawing.Point(50, 58);
             this.dataGridViewVols.Name = "dataGridViewVols";
+            this.dataGridViewVols.ReadOnly = true;
             this.dataGridViewVols.Size = new System.Drawing.Size(817, 219);
             this.dataGridViewVols.TabIndex = 0;
             // 
@@ -200,6 +182,16 @@
             this.tabDetails.Size = new System.Drawing.Size(925, 575);
             this.tabDetails.TabIndex = 1;
             this.tabDetails.Text = "Détails";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(681, 80);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(151, 57);
+            this.btnRefresh.TabIndex = 16;
+            this.btnRefresh.Text = "Rafraîchir";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // dataGridViewCA
             // 
@@ -239,33 +231,33 @@
             // 
             // txtCAVol
             // 
-            this.txtCAVol.Enabled = false;
             this.txtCAVol.Location = new System.Drawing.Point(466, 144);
             this.txtCAVol.Name = "txtCAVol";
+            this.txtCAVol.ReadOnly = true;
             this.txtCAVol.Size = new System.Drawing.Size(121, 20);
             this.txtCAVol.TabIndex = 11;
             // 
             // txtNbPlacesRestantes
             // 
-            this.txtNbPlacesRestantes.Enabled = false;
             this.txtNbPlacesRestantes.Location = new System.Drawing.Point(178, 144);
             this.txtNbPlacesRestantes.Name = "txtNbPlacesRestantes";
+            this.txtNbPlacesRestantes.ReadOnly = true;
             this.txtNbPlacesRestantes.Size = new System.Drawing.Size(121, 20);
             this.txtNbPlacesRestantes.TabIndex = 10;
             // 
             // txtOccupationVol
             // 
-            this.txtOccupationVol.Enabled = false;
             this.txtOccupationVol.Location = new System.Drawing.Point(466, 80);
             this.txtOccupationVol.Name = "txtOccupationVol";
+            this.txtOccupationVol.ReadOnly = true;
             this.txtOccupationVol.Size = new System.Drawing.Size(121, 20);
             this.txtOccupationVol.TabIndex = 9;
             // 
             // txtNbPassagers
             // 
-            this.txtNbPassagers.Enabled = false;
             this.txtNbPassagers.Location = new System.Drawing.Point(178, 80);
             this.txtNbPassagers.Name = "txtNbPassagers";
+            this.txtNbPassagers.ReadOnly = true;
             this.txtNbPassagers.Size = new System.Drawing.Size(121, 20);
             this.txtNbPassagers.TabIndex = 8;
             // 
@@ -276,6 +268,7 @@
             this.cmbDateVol.Name = "cmbDateVol";
             this.cmbDateVol.Size = new System.Drawing.Size(121, 21);
             this.cmbDateVol.TabIndex = 7;
+            this.cmbDateVol.SelectedIndexChanged += new System.EventHandler(this.cmbDateVol_SelectedIndexChanged);
             // 
             // cmbVolDetails
             // 
@@ -284,6 +277,7 @@
             this.cmbVolDetails.Name = "cmbVolDetails";
             this.cmbVolDetails.Size = new System.Drawing.Size(121, 21);
             this.cmbVolDetails.TabIndex = 6;
+            this.cmbVolDetails.SelectedIndexChanged += new System.EventHandler(this.cmbVolDetails_SelectedIndexChanged);
             // 
             // lblCAVol
             // 
@@ -339,15 +333,6 @@
             this.lblVolDetails.TabIndex = 0;
             this.lblVolDetails.Text = "Vol";
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(681, 80);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(151, 57);
-            this.btnRefresh.TabIndex = 16;
-            this.btnRefresh.Text = "Rafraîchir";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -374,8 +359,6 @@
         private System.Windows.Forms.TabControl tabsAdmin;
         private System.Windows.Forms.TabPage tabGeneral;
         private System.Windows.Forms.TabPage tabDetails;
-        private System.Windows.Forms.Label lblPrixGeneralDetails;
-        private System.Windows.Forms.Label lblVolsGeneralDetails;
         private System.Windows.Forms.ComboBox cmbTranchePrix;
         private System.Windows.Forms.TextBox txtVolsInput;
         private System.Windows.Forms.Button btnFiltreVols;

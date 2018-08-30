@@ -30,55 +30,54 @@
         {
             this.tabsUser = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.lblVols = new System.Windows.Forms.Label();
             this.dataGridViewReservations = new System.Windows.Forms.DataGridView();
             this.tabDetails = new System.Windows.Forms.TabPage();
-            this.btnSubmit = new System.Windows.Forms.Button();
-            this.lblCADetails = new System.Windows.Forms.Label();
-            this.lblPassagersVol = new System.Windows.Forms.Label();
-            this.txtNomVoyageur3 = new System.Windows.Forms.TextBox();
-            this.txtNomVoyageur2 = new System.Windows.Forms.TextBox();
-            this.txtNomVoyageur1 = new System.Windows.Forms.TextBox();
-            this.cmbDateVolAller = new System.Windows.Forms.ComboBox();
-            this.cmbVolAller = new System.Windows.Forms.ComboBox();
-            this.lblCAVol = new System.Windows.Forms.Label();
-            this.lblPlacesRestantes = new System.Windows.Forms.Label();
-            this.lblOccupation = new System.Windows.Forms.Label();
-            this.lblNbPassagers = new System.Windows.Forms.Label();
-            this.lblDateVolDetails = new System.Windows.Forms.Label();
-            this.lblVolDetails = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.radioAller = new System.Windows.Forms.RadioButton();
-            this.radioAllerRetour = new System.Windows.Forms.RadioButton();
-            this.cmbDateVolRetour = new System.Windows.Forms.ComboBox();
-            this.cmbVolRetour = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblEnterDetailsWarning = new System.Windows.Forms.Label();
-            this.btnReserver = new System.Windows.Forms.Button();
-            this.btnReinitialiser = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtNomVoyageur5 = new System.Windows.Forms.TextBox();
-            this.txtNomVoyageur4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.dateTimePickerVoyageur5 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerVoyageur4 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerVoyageur3 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerVoyageur2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerVoyageur1 = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPrenomVoyageur5 = new System.Windows.Forms.TextBox();
             this.txtPrenomVoyageur4 = new System.Windows.Forms.TextBox();
             this.txtPrenomVoyageur3 = new System.Windows.Forms.TextBox();
             this.txtPrenomVoyageur2 = new System.Windows.Forms.TextBox();
             this.txtPrenomVoyageur1 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dateTimePickerVoyageur1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerVoyageur2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerVoyageur3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerVoyageur5 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerVoyageur4 = new System.Windows.Forms.DateTimePicker();
-            this.btnRefresh = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtNomVoyageur5 = new System.Windows.Forms.TextBox();
+            this.txtNomVoyageur4 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.lblCADetails = new System.Windows.Forms.Label();
+            this.txtNomVoyageur3 = new System.Windows.Forms.TextBox();
+            this.txtNomVoyageur2 = new System.Windows.Forms.TextBox();
+            this.txtNomVoyageur1 = new System.Windows.Forms.TextBox();
+            this.lblCAVol = new System.Windows.Forms.Label();
+            this.lblPlacesRestantes = new System.Windows.Forms.Label();
+            this.lblOccupation = new System.Windows.Forms.Label();
+            this.lblNbPassagers = new System.Windows.Forms.Label();
+            this.btnReinitialiser = new System.Windows.Forms.Button();
+            this.cmbDateVolRetour = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.radioAllerRetour = new System.Windows.Forms.RadioButton();
+            this.radioAller = new System.Windows.Forms.RadioButton();
+            this.lblPassagersVol = new System.Windows.Forms.Label();
+            this.cmbDateVolAller = new System.Windows.Forms.ComboBox();
+            this.cmbVolAller = new System.Windows.Forms.ComboBox();
+            this.lblDateVolDetails = new System.Windows.Forms.Label();
+            this.lblVolDetails = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblVolModif = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnAjouterVoy = new System.Windows.Forms.Button();
+            this.txtDateVoyMod = new System.Windows.Forms.TextBox();
             this.txtPrenomVoyMod = new System.Windows.Forms.TextBox();
             this.txtNomVoyMod = new System.Windows.Forms.TextBox();
             this.btnMettreAJourVoy = new System.Windows.Forms.Button();
@@ -95,8 +94,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.cmbListeVolsReserves = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.lblVolModif = new System.Windows.Forms.Label();
-            this.txtDateVoyMod = new System.Windows.Forms.TextBox();
+            this.txtVolRetour = new System.Windows.Forms.TextBox();
             this.tabsUser.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReservations)).BeginInit();
@@ -130,6 +128,16 @@
             this.tabGeneral.TabIndex = 0;
             this.tabGeneral.Text = "Réservations";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(356, 500);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(151, 57);
+            this.btnRefresh.TabIndex = 17;
+            this.btnRefresh.Text = "Rafraîchir";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // lblVols
             // 
             this.lblVols.AutoSize = true;
@@ -152,6 +160,7 @@
             // tabDetails
             // 
             this.tabDetails.BackColor = System.Drawing.SystemColors.Control;
+            this.tabDetails.Controls.Add(this.txtVolRetour);
             this.tabDetails.Controls.Add(this.dateTimePickerVoyageur5);
             this.tabDetails.Controls.Add(this.dateTimePickerVoyageur4);
             this.tabDetails.Controls.Add(this.dateTimePickerVoyageur3);
@@ -168,27 +177,24 @@
             this.tabDetails.Controls.Add(this.txtNomVoyageur5);
             this.tabDetails.Controls.Add(this.txtNomVoyageur4);
             this.tabDetails.Controls.Add(this.label4);
-            this.tabDetails.Controls.Add(this.btnReinitialiser);
-            this.tabDetails.Controls.Add(this.btnReserver);
-            this.tabDetails.Controls.Add(this.lblEnterDetailsWarning);
-            this.tabDetails.Controls.Add(this.cmbDateVolRetour);
-            this.tabDetails.Controls.Add(this.cmbVolRetour);
-            this.tabDetails.Controls.Add(this.label1);
-            this.tabDetails.Controls.Add(this.label2);
-            this.tabDetails.Controls.Add(this.radioAllerRetour);
-            this.tabDetails.Controls.Add(this.radioAller);
             this.tabDetails.Controls.Add(this.btnSubmit);
             this.tabDetails.Controls.Add(this.lblCADetails);
-            this.tabDetails.Controls.Add(this.lblPassagersVol);
             this.tabDetails.Controls.Add(this.txtNomVoyageur3);
             this.tabDetails.Controls.Add(this.txtNomVoyageur2);
             this.tabDetails.Controls.Add(this.txtNomVoyageur1);
-            this.tabDetails.Controls.Add(this.cmbDateVolAller);
-            this.tabDetails.Controls.Add(this.cmbVolAller);
             this.tabDetails.Controls.Add(this.lblCAVol);
             this.tabDetails.Controls.Add(this.lblPlacesRestantes);
             this.tabDetails.Controls.Add(this.lblOccupation);
             this.tabDetails.Controls.Add(this.lblNbPassagers);
+            this.tabDetails.Controls.Add(this.btnReinitialiser);
+            this.tabDetails.Controls.Add(this.cmbDateVolRetour);
+            this.tabDetails.Controls.Add(this.label1);
+            this.tabDetails.Controls.Add(this.label2);
+            this.tabDetails.Controls.Add(this.radioAllerRetour);
+            this.tabDetails.Controls.Add(this.radioAller);
+            this.tabDetails.Controls.Add(this.lblPassagersVol);
+            this.tabDetails.Controls.Add(this.cmbDateVolAller);
+            this.tabDetails.Controls.Add(this.cmbVolAller);
             this.tabDetails.Controls.Add(this.lblDateVolDetails);
             this.tabDetails.Controls.Add(this.lblVolDetails);
             this.tabDetails.Location = new System.Drawing.Point(4, 22);
@@ -197,13 +203,139 @@
             this.tabDetails.Size = new System.Drawing.Size(860, 575);
             this.tabDetails.TabIndex = 1;
             this.tabDetails.Text = "Ajouter Vol";
+            this.tabDetails.Click += new System.EventHandler(this.tabDetails_Click);
+            // 
+            // dateTimePickerVoyageur5
+            // 
+            this.dateTimePickerVoyageur5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerVoyageur5.Location = new System.Drawing.Point(547, 426);
+            this.dateTimePickerVoyageur5.Name = "dateTimePickerVoyageur5";
+            this.dateTimePickerVoyageur5.Size = new System.Drawing.Size(98, 20);
+            this.dateTimePickerVoyageur5.TabIndex = 66;
+            // 
+            // dateTimePickerVoyageur4
+            // 
+            this.dateTimePickerVoyageur4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerVoyageur4.Location = new System.Drawing.Point(547, 387);
+            this.dateTimePickerVoyageur4.Name = "dateTimePickerVoyageur4";
+            this.dateTimePickerVoyageur4.Size = new System.Drawing.Size(98, 20);
+            this.dateTimePickerVoyageur4.TabIndex = 65;
+            // 
+            // dateTimePickerVoyageur3
+            // 
+            this.dateTimePickerVoyageur3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerVoyageur3.Location = new System.Drawing.Point(547, 349);
+            this.dateTimePickerVoyageur3.Name = "dateTimePickerVoyageur3";
+            this.dateTimePickerVoyageur3.Size = new System.Drawing.Size(98, 20);
+            this.dateTimePickerVoyageur3.TabIndex = 64;
+            // 
+            // dateTimePickerVoyageur2
+            // 
+            this.dateTimePickerVoyageur2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerVoyageur2.Location = new System.Drawing.Point(547, 310);
+            this.dateTimePickerVoyageur2.Name = "dateTimePickerVoyageur2";
+            this.dateTimePickerVoyageur2.Size = new System.Drawing.Size(98, 20);
+            this.dateTimePickerVoyageur2.TabIndex = 63;
+            // 
+            // dateTimePickerVoyageur1
+            // 
+            this.dateTimePickerVoyageur1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerVoyageur1.Location = new System.Drawing.Point(547, 270);
+            this.dateTimePickerVoyageur1.Name = "dateTimePickerVoyageur1";
+            this.dateTimePickerVoyageur1.Size = new System.Drawing.Size(98, 20);
+            this.dateTimePickerVoyageur1.TabIndex = 62;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(549, 243);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(96, 13);
+            this.label7.TabIndex = 61;
+            this.label7.Text = "Date de naissance";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(396, 243);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.TabIndex = 60;
+            this.label6.Text = "Prénom";
+            // 
+            // txtPrenomVoyageur5
+            // 
+            this.txtPrenomVoyageur5.Location = new System.Drawing.Point(357, 426);
+            this.txtPrenomVoyageur5.Name = "txtPrenomVoyageur5";
+            this.txtPrenomVoyageur5.Size = new System.Drawing.Size(121, 20);
+            this.txtPrenomVoyageur5.TabIndex = 59;
+            // 
+            // txtPrenomVoyageur4
+            // 
+            this.txtPrenomVoyageur4.Location = new System.Drawing.Point(357, 387);
+            this.txtPrenomVoyageur4.Name = "txtPrenomVoyageur4";
+            this.txtPrenomVoyageur4.Size = new System.Drawing.Size(121, 20);
+            this.txtPrenomVoyageur4.TabIndex = 58;
+            // 
+            // txtPrenomVoyageur3
+            // 
+            this.txtPrenomVoyageur3.Location = new System.Drawing.Point(357, 349);
+            this.txtPrenomVoyageur3.Name = "txtPrenomVoyageur3";
+            this.txtPrenomVoyageur3.Size = new System.Drawing.Size(121, 20);
+            this.txtPrenomVoyageur3.TabIndex = 57;
+            // 
+            // txtPrenomVoyageur2
+            // 
+            this.txtPrenomVoyageur2.Location = new System.Drawing.Point(357, 310);
+            this.txtPrenomVoyageur2.Name = "txtPrenomVoyageur2";
+            this.txtPrenomVoyageur2.Size = new System.Drawing.Size(121, 20);
+            this.txtPrenomVoyageur2.TabIndex = 56;
+            // 
+            // txtPrenomVoyageur1
+            // 
+            this.txtPrenomVoyageur1.Location = new System.Drawing.Point(357, 270);
+            this.txtPrenomVoyageur1.Name = "txtPrenomVoyageur1";
+            this.txtPrenomVoyageur1.Size = new System.Drawing.Size(121, 20);
+            this.txtPrenomVoyageur1.TabIndex = 55;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(222, 243);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 13);
+            this.label5.TabIndex = 54;
+            this.label5.Text = "Nom";
+            // 
+            // txtNomVoyageur5
+            // 
+            this.txtNomVoyageur5.Location = new System.Drawing.Point(174, 426);
+            this.txtNomVoyageur5.Name = "txtNomVoyageur5";
+            this.txtNomVoyageur5.Size = new System.Drawing.Size(121, 20);
+            this.txtNomVoyageur5.TabIndex = 53;
+            // 
+            // txtNomVoyageur4
+            // 
+            this.txtNomVoyageur4.Location = new System.Drawing.Point(174, 387);
+            this.txtNomVoyageur4.Name = "txtNomVoyageur4";
+            this.txtNomVoyageur4.Size = new System.Drawing.Size(121, 20);
+            this.txtNomVoyageur4.TabIndex = 52;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(25, 429);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.TabIndex = 51;
+            this.label4.Text = "Voyageur 5";
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(344, 277);
+            this.btnSubmit.Location = new System.Drawing.Point(225, 470);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(151, 57);
-            this.btnSubmit.TabIndex = 16;
+            this.btnSubmit.TabIndex = 50;
             this.btnSubmit.Text = "Soumettre";
             this.btnSubmit.UseVisualStyleBackColor = true;
             // 
@@ -211,104 +343,160 @@
             // 
             this.lblCADetails.AutoSize = true;
             this.lblCADetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCADetails.Location = new System.Drawing.Point(24, 18);
+            this.lblCADetails.Location = new System.Drawing.Point(20, 211);
             this.lblCADetails.Name = "lblCADetails";
             this.lblCADetails.Size = new System.Drawing.Size(110, 24);
-            this.lblCADetails.TabIndex = 13;
+            this.lblCADetails.TabIndex = 49;
             this.lblCADetails.Text = "Voyageurs";
+            // 
+            // txtNomVoyageur3
+            // 
+            this.txtNomVoyageur3.Location = new System.Drawing.Point(174, 349);
+            this.txtNomVoyageur3.Name = "txtNomVoyageur3";
+            this.txtNomVoyageur3.Size = new System.Drawing.Size(121, 20);
+            this.txtNomVoyageur3.TabIndex = 48;
+            // 
+            // txtNomVoyageur2
+            // 
+            this.txtNomVoyageur2.Location = new System.Drawing.Point(174, 310);
+            this.txtNomVoyageur2.Name = "txtNomVoyageur2";
+            this.txtNomVoyageur2.Size = new System.Drawing.Size(121, 20);
+            this.txtNomVoyageur2.TabIndex = 47;
+            // 
+            // txtNomVoyageur1
+            // 
+            this.txtNomVoyageur1.Location = new System.Drawing.Point(174, 270);
+            this.txtNomVoyageur1.Name = "txtNomVoyageur1";
+            this.txtNomVoyageur1.Size = new System.Drawing.Size(121, 20);
+            this.txtNomVoyageur1.TabIndex = 46;
+            // 
+            // lblCAVol
+            // 
+            this.lblCAVol.AutoSize = true;
+            this.lblCAVol.Location = new System.Drawing.Point(25, 390);
+            this.lblCAVol.Name = "lblCAVol";
+            this.lblCAVol.Size = new System.Drawing.Size(61, 13);
+            this.lblCAVol.TabIndex = 45;
+            this.lblCAVol.Text = "Voyageur 4";
+            // 
+            // lblPlacesRestantes
+            // 
+            this.lblPlacesRestantes.AutoSize = true;
+            this.lblPlacesRestantes.Location = new System.Drawing.Point(24, 313);
+            this.lblPlacesRestantes.Name = "lblPlacesRestantes";
+            this.lblPlacesRestantes.Size = new System.Drawing.Size(61, 13);
+            this.lblPlacesRestantes.TabIndex = 44;
+            this.lblPlacesRestantes.Text = "Voyageur 2";
+            // 
+            // lblOccupation
+            // 
+            this.lblOccupation.AutoSize = true;
+            this.lblOccupation.Location = new System.Drawing.Point(24, 352);
+            this.lblOccupation.Name = "lblOccupation";
+            this.lblOccupation.Size = new System.Drawing.Size(61, 13);
+            this.lblOccupation.TabIndex = 43;
+            this.lblOccupation.Text = "Voyageur 3";
+            // 
+            // lblNbPassagers
+            // 
+            this.lblNbPassagers.AutoSize = true;
+            this.lblNbPassagers.Location = new System.Drawing.Point(24, 273);
+            this.lblNbPassagers.Name = "lblNbPassagers";
+            this.lblNbPassagers.Size = new System.Drawing.Size(61, 13);
+            this.lblNbPassagers.TabIndex = 42;
+            this.lblNbPassagers.Text = "Voyageur 1";
+            // 
+            // btnReinitialiser
+            // 
+            this.btnReinitialiser.Enabled = false;
+            this.btnReinitialiser.Location = new System.Drawing.Point(440, 470);
+            this.btnReinitialiser.Name = "btnReinitialiser";
+            this.btnReinitialiser.Size = new System.Drawing.Size(151, 57);
+            this.btnReinitialiser.TabIndex = 25;
+            this.btnReinitialiser.Text = "Réinitialiser";
+            this.btnReinitialiser.UseVisualStyleBackColor = true;
+            // 
+            // cmbDateVolRetour
+            // 
+            this.cmbDateVolRetour.Enabled = false;
+            this.cmbDateVolRetour.FormattingEnabled = true;
+            this.cmbDateVolRetour.Location = new System.Drawing.Point(440, 135);
+            this.cmbDateVolRetour.Name = "cmbDateVolRetour";
+            this.cmbDateVolRetour.Size = new System.Drawing.Size(121, 21);
+            this.cmbDateVolRetour.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(391, 138);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Date";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(25, 138);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Vol Retour";
+            // 
+            // radioAllerRetour
+            // 
+            this.radioAllerRetour.AutoSize = true;
+            this.radioAllerRetour.Location = new System.Drawing.Point(119, 103);
+            this.radioAllerRetour.Name = "radioAllerRetour";
+            this.radioAllerRetour.Size = new System.Drawing.Size(80, 17);
+            this.radioAllerRetour.TabIndex = 18;
+            this.radioAllerRetour.Text = "Aller Retour";
+            this.radioAllerRetour.UseVisualStyleBackColor = true;
+            this.radioAllerRetour.CheckedChanged += new System.EventHandler(this.radioAllerRetour_CheckedChanged);
+            // 
+            // radioAller
+            // 
+            this.radioAller.AutoSize = true;
+            this.radioAller.Checked = true;
+            this.radioAller.Location = new System.Drawing.Point(28, 103);
+            this.radioAller.Name = "radioAller";
+            this.radioAller.Size = new System.Drawing.Size(79, 17);
+            this.radioAller.TabIndex = 17;
+            this.radioAller.TabStop = true;
+            this.radioAller.Text = "Aller Simple";
+            this.radioAller.UseVisualStyleBackColor = true;
             // 
             // lblPassagersVol
             // 
             this.lblPassagersVol.AutoSize = true;
             this.lblPassagersVol.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassagersVol.Location = new System.Drawing.Point(22, 365);
+            this.lblPassagersVol.Location = new System.Drawing.Point(22, 25);
             this.lblPassagersVol.Name = "lblPassagersVol";
             this.lblPassagersVol.Size = new System.Drawing.Size(113, 24);
             this.lblPassagersVol.TabIndex = 12;
             this.lblPassagersVol.Text = "Destination";
             // 
-            // txtNomVoyageur3
-            // 
-            this.txtNomVoyageur3.Enabled = false;
-            this.txtNomVoyageur3.Location = new System.Drawing.Point(178, 156);
-            this.txtNomVoyageur3.Name = "txtNomVoyageur3";
-            this.txtNomVoyageur3.Size = new System.Drawing.Size(121, 20);
-            this.txtNomVoyageur3.TabIndex = 11;
-            // 
-            // txtNomVoyageur2
-            // 
-            this.txtNomVoyageur2.Enabled = false;
-            this.txtNomVoyageur2.Location = new System.Drawing.Point(178, 117);
-            this.txtNomVoyageur2.Name = "txtNomVoyageur2";
-            this.txtNomVoyageur2.Size = new System.Drawing.Size(121, 20);
-            this.txtNomVoyageur2.TabIndex = 10;
-            // 
-            // txtNomVoyageur1
-            // 
-            this.txtNomVoyageur1.Enabled = false;
-            this.txtNomVoyageur1.Location = new System.Drawing.Point(178, 77);
-            this.txtNomVoyageur1.Name = "txtNomVoyageur1";
-            this.txtNomVoyageur1.Size = new System.Drawing.Size(121, 20);
-            this.txtNomVoyageur1.TabIndex = 8;
-            // 
             // cmbDateVolAller
             // 
-            this.cmbDateVolAller.Enabled = false;
             this.cmbDateVolAller.FormattingEnabled = true;
-            this.cmbDateVolAller.Location = new System.Drawing.Point(440, 405);
+            this.cmbDateVolAller.Location = new System.Drawing.Point(440, 65);
             this.cmbDateVolAller.Name = "cmbDateVolAller";
             this.cmbDateVolAller.Size = new System.Drawing.Size(121, 21);
             this.cmbDateVolAller.TabIndex = 7;
             // 
             // cmbVolAller
             // 
-            this.cmbVolAller.Enabled = false;
             this.cmbVolAller.FormattingEnabled = true;
-            this.cmbVolAller.Location = new System.Drawing.Point(107, 405);
+            this.cmbVolAller.Location = new System.Drawing.Point(107, 65);
             this.cmbVolAller.Name = "cmbVolAller";
             this.cmbVolAller.Size = new System.Drawing.Size(260, 21);
             this.cmbVolAller.TabIndex = 6;
-            // 
-            // lblCAVol
-            // 
-            this.lblCAVol.AutoSize = true;
-            this.lblCAVol.Location = new System.Drawing.Point(29, 197);
-            this.lblCAVol.Name = "lblCAVol";
-            this.lblCAVol.Size = new System.Drawing.Size(61, 13);
-            this.lblCAVol.TabIndex = 5;
-            this.lblCAVol.Text = "Voyageur 4";
-            // 
-            // lblPlacesRestantes
-            // 
-            this.lblPlacesRestantes.AutoSize = true;
-            this.lblPlacesRestantes.Location = new System.Drawing.Point(28, 120);
-            this.lblPlacesRestantes.Name = "lblPlacesRestantes";
-            this.lblPlacesRestantes.Size = new System.Drawing.Size(61, 13);
-            this.lblPlacesRestantes.TabIndex = 4;
-            this.lblPlacesRestantes.Text = "Voyageur 2";
-            // 
-            // lblOccupation
-            // 
-            this.lblOccupation.AutoSize = true;
-            this.lblOccupation.Location = new System.Drawing.Point(28, 159);
-            this.lblOccupation.Name = "lblOccupation";
-            this.lblOccupation.Size = new System.Drawing.Size(61, 13);
-            this.lblOccupation.TabIndex = 3;
-            this.lblOccupation.Text = "Voyageur 3";
-            // 
-            // lblNbPassagers
-            // 
-            this.lblNbPassagers.AutoSize = true;
-            this.lblNbPassagers.Location = new System.Drawing.Point(28, 80);
-            this.lblNbPassagers.Name = "lblNbPassagers";
-            this.lblNbPassagers.Size = new System.Drawing.Size(61, 13);
-            this.lblNbPassagers.TabIndex = 2;
-            this.lblNbPassagers.Text = "Voyageur 1";
+            this.cmbVolAller.SelectedIndexChanged += new System.EventHandler(this.cmbVolAller_SelectedIndexChanged);
             // 
             // lblDateVolDetails
             // 
             this.lblDateVolDetails.AutoSize = true;
-            this.lblDateVolDetails.Location = new System.Drawing.Point(391, 408);
+            this.lblDateVolDetails.Location = new System.Drawing.Point(391, 68);
             this.lblDateVolDetails.Name = "lblDateVolDetails";
             this.lblDateVolDetails.Size = new System.Drawing.Size(30, 13);
             this.lblDateVolDetails.TabIndex = 1;
@@ -317,7 +505,7 @@
             // lblVolDetails
             // 
             this.lblVolDetails.AutoSize = true;
-            this.lblVolDetails.Location = new System.Drawing.Point(25, 408);
+            this.lblVolDetails.Location = new System.Drawing.Point(25, 68);
             this.lblVolDetails.Name = "lblVolDetails";
             this.lblVolDetails.Size = new System.Drawing.Size(22, 13);
             this.lblVolDetails.TabIndex = 0;
@@ -356,237 +544,15 @@
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Modifier Vol";
             // 
-            // radioAller
+            // lblVolModif
             // 
-            this.radioAller.AutoSize = true;
-            this.radioAller.Checked = true;
-            this.radioAller.Enabled = false;
-            this.radioAller.Location = new System.Drawing.Point(28, 443);
-            this.radioAller.Name = "radioAller";
-            this.radioAller.Size = new System.Drawing.Size(79, 17);
-            this.radioAller.TabIndex = 17;
-            this.radioAller.TabStop = true;
-            this.radioAller.Text = "Aller Simple";
-            this.radioAller.UseVisualStyleBackColor = true;
-            // 
-            // radioAllerRetour
-            // 
-            this.radioAllerRetour.AutoSize = true;
-            this.radioAllerRetour.Enabled = false;
-            this.radioAllerRetour.Location = new System.Drawing.Point(119, 443);
-            this.radioAllerRetour.Name = "radioAllerRetour";
-            this.radioAllerRetour.Size = new System.Drawing.Size(80, 17);
-            this.radioAllerRetour.TabIndex = 18;
-            this.radioAllerRetour.Text = "Aller Retour";
-            this.radioAllerRetour.UseVisualStyleBackColor = true;
-            // 
-            // cmbDateVolRetour
-            // 
-            this.cmbDateVolRetour.Enabled = false;
-            this.cmbDateVolRetour.FormattingEnabled = true;
-            this.cmbDateVolRetour.Location = new System.Drawing.Point(440, 475);
-            this.cmbDateVolRetour.Name = "cmbDateVolRetour";
-            this.cmbDateVolRetour.Size = new System.Drawing.Size(121, 21);
-            this.cmbDateVolRetour.TabIndex = 22;
-            // 
-            // cmbVolRetour
-            // 
-            this.cmbVolRetour.Enabled = false;
-            this.cmbVolRetour.FormattingEnabled = true;
-            this.cmbVolRetour.Location = new System.Drawing.Point(107, 475);
-            this.cmbVolRetour.Name = "cmbVolRetour";
-            this.cmbVolRetour.Size = new System.Drawing.Size(260, 21);
-            this.cmbVolRetour.TabIndex = 21;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(391, 478);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Date";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 478);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Vol Retour";
-            // 
-            // lblEnterDetailsWarning
-            // 
-            this.lblEnterDetailsWarning.AutoSize = true;
-            this.lblEnterDetailsWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEnterDetailsWarning.ForeColor = System.Drawing.Color.Red;
-            this.lblEnterDetailsWarning.Location = new System.Drawing.Point(150, 373);
-            this.lblEnterDetailsWarning.Name = "lblEnterDetailsWarning";
-            this.lblEnterDetailsWarning.Size = new System.Drawing.Size(443, 13);
-            this.lblEnterDetailsWarning.TabIndex = 23;
-            this.lblEnterDetailsWarning.Text = "Veuillez entrer les détails des voyageurs puis cliquer sur le bouton Soumettre";
-            // 
-            // btnReserver
-            // 
-            this.btnReserver.Enabled = false;
-            this.btnReserver.Location = new System.Drawing.Point(660, 386);
-            this.btnReserver.Name = "btnReserver";
-            this.btnReserver.Size = new System.Drawing.Size(151, 57);
-            this.btnReserver.TabIndex = 24;
-            this.btnReserver.Text = "Réserver";
-            this.btnReserver.UseVisualStyleBackColor = true;
-            // 
-            // btnReinitialiser
-            // 
-            this.btnReinitialiser.Enabled = false;
-            this.btnReinitialiser.Location = new System.Drawing.Point(660, 456);
-            this.btnReinitialiser.Name = "btnReinitialiser";
-            this.btnReinitialiser.Size = new System.Drawing.Size(151, 57);
-            this.btnReinitialiser.TabIndex = 25;
-            this.btnReinitialiser.Text = "Réinitialiser";
-            this.btnReinitialiser.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 236);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 13);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "Voyageur 5";
-            // 
-            // txtNomVoyageur5
-            // 
-            this.txtNomVoyageur5.Enabled = false;
-            this.txtNomVoyageur5.Location = new System.Drawing.Point(178, 233);
-            this.txtNomVoyageur5.Name = "txtNomVoyageur5";
-            this.txtNomVoyageur5.Size = new System.Drawing.Size(121, 20);
-            this.txtNomVoyageur5.TabIndex = 28;
-            // 
-            // txtNomVoyageur4
-            // 
-            this.txtNomVoyageur4.Enabled = false;
-            this.txtNomVoyageur4.Location = new System.Drawing.Point(178, 194);
-            this.txtNomVoyageur4.Name = "txtNomVoyageur4";
-            this.txtNomVoyageur4.Size = new System.Drawing.Size(121, 20);
-            this.txtNomVoyageur4.TabIndex = 27;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(226, 50);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 13);
-            this.label5.TabIndex = 29;
-            this.label5.Text = "Nom";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(400, 50);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 13);
-            this.label6.TabIndex = 35;
-            this.label6.Text = "Prénom";
-            // 
-            // txtPrenomVoyageur5
-            // 
-            this.txtPrenomVoyageur5.Enabled = false;
-            this.txtPrenomVoyageur5.Location = new System.Drawing.Point(361, 233);
-            this.txtPrenomVoyageur5.Name = "txtPrenomVoyageur5";
-            this.txtPrenomVoyageur5.Size = new System.Drawing.Size(121, 20);
-            this.txtPrenomVoyageur5.TabIndex = 34;
-            // 
-            // txtPrenomVoyageur4
-            // 
-            this.txtPrenomVoyageur4.Enabled = false;
-            this.txtPrenomVoyageur4.Location = new System.Drawing.Point(361, 194);
-            this.txtPrenomVoyageur4.Name = "txtPrenomVoyageur4";
-            this.txtPrenomVoyageur4.Size = new System.Drawing.Size(121, 20);
-            this.txtPrenomVoyageur4.TabIndex = 33;
-            // 
-            // txtPrenomVoyageur3
-            // 
-            this.txtPrenomVoyageur3.Enabled = false;
-            this.txtPrenomVoyageur3.Location = new System.Drawing.Point(361, 156);
-            this.txtPrenomVoyageur3.Name = "txtPrenomVoyageur3";
-            this.txtPrenomVoyageur3.Size = new System.Drawing.Size(121, 20);
-            this.txtPrenomVoyageur3.TabIndex = 32;
-            // 
-            // txtPrenomVoyageur2
-            // 
-            this.txtPrenomVoyageur2.Enabled = false;
-            this.txtPrenomVoyageur2.Location = new System.Drawing.Point(361, 117);
-            this.txtPrenomVoyageur2.Name = "txtPrenomVoyageur2";
-            this.txtPrenomVoyageur2.Size = new System.Drawing.Size(121, 20);
-            this.txtPrenomVoyageur2.TabIndex = 31;
-            // 
-            // txtPrenomVoyageur1
-            // 
-            this.txtPrenomVoyageur1.Enabled = false;
-            this.txtPrenomVoyageur1.Location = new System.Drawing.Point(361, 77);
-            this.txtPrenomVoyageur1.Name = "txtPrenomVoyageur1";
-            this.txtPrenomVoyageur1.Size = new System.Drawing.Size(121, 20);
-            this.txtPrenomVoyageur1.TabIndex = 30;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(553, 50);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(96, 13);
-            this.label7.TabIndex = 36;
-            this.label7.Text = "Date de naissance";
-            // 
-            // dateTimePickerVoyageur1
-            // 
-            this.dateTimePickerVoyageur1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerVoyageur1.Location = new System.Drawing.Point(551, 77);
-            this.dateTimePickerVoyageur1.Name = "dateTimePickerVoyageur1";
-            this.dateTimePickerVoyageur1.Size = new System.Drawing.Size(98, 20);
-            this.dateTimePickerVoyageur1.TabIndex = 37;
-            // 
-            // dateTimePickerVoyageur2
-            // 
-            this.dateTimePickerVoyageur2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerVoyageur2.Location = new System.Drawing.Point(551, 117);
-            this.dateTimePickerVoyageur2.Name = "dateTimePickerVoyageur2";
-            this.dateTimePickerVoyageur2.Size = new System.Drawing.Size(98, 20);
-            this.dateTimePickerVoyageur2.TabIndex = 38;
-            // 
-            // dateTimePickerVoyageur3
-            // 
-            this.dateTimePickerVoyageur3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerVoyageur3.Location = new System.Drawing.Point(551, 156);
-            this.dateTimePickerVoyageur3.Name = "dateTimePickerVoyageur3";
-            this.dateTimePickerVoyageur3.Size = new System.Drawing.Size(98, 20);
-            this.dateTimePickerVoyageur3.TabIndex = 39;
-            // 
-            // dateTimePickerVoyageur5
-            // 
-            this.dateTimePickerVoyageur5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerVoyageur5.Location = new System.Drawing.Point(551, 233);
-            this.dateTimePickerVoyageur5.Name = "dateTimePickerVoyageur5";
-            this.dateTimePickerVoyageur5.Size = new System.Drawing.Size(98, 20);
-            this.dateTimePickerVoyageur5.TabIndex = 41;
-            // 
-            // dateTimePickerVoyageur4
-            // 
-            this.dateTimePickerVoyageur4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerVoyageur4.Location = new System.Drawing.Point(551, 194);
-            this.dateTimePickerVoyageur4.Name = "dateTimePickerVoyageur4";
-            this.dateTimePickerVoyageur4.Size = new System.Drawing.Size(98, 20);
-            this.dateTimePickerVoyageur4.TabIndex = 40;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(356, 500);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(151, 57);
-            this.btnRefresh.TabIndex = 17;
-            this.btnRefresh.Text = "Rafraîchir";
-            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.lblVolModif.AutoSize = true;
+            this.lblVolModif.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVolModif.Location = new System.Drawing.Point(26, 20);
+            this.lblVolModif.Name = "lblVolModif";
+            this.lblVolModif.Size = new System.Drawing.Size(132, 24);
+            this.lblVolModif.TabIndex = 54;
+            this.lblVolModif.Text = "Modifier Vols";
             // 
             // label10
             // 
@@ -632,6 +598,13 @@
             this.btnAjouterVoy.TabIndex = 49;
             this.btnAjouterVoy.Text = "Ajouter";
             this.btnAjouterVoy.UseVisualStyleBackColor = true;
+            // 
+            // txtDateVoyMod
+            // 
+            this.txtDateVoyMod.Location = new System.Drawing.Point(383, 453);
+            this.txtDateVoyMod.Name = "txtDateVoyMod";
+            this.txtDateVoyMod.Size = new System.Drawing.Size(100, 20);
+            this.txtDateVoyMod.TabIndex = 45;
             // 
             // txtPrenomVoyMod
             // 
@@ -769,22 +742,13 @@
             this.label15.TabIndex = 28;
             this.label15.Text = "Vols réservés";
             // 
-            // lblVolModif
+            // txtVolRetour
             // 
-            this.lblVolModif.AutoSize = true;
-            this.lblVolModif.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVolModif.Location = new System.Drawing.Point(26, 20);
-            this.lblVolModif.Name = "lblVolModif";
-            this.lblVolModif.Size = new System.Drawing.Size(132, 24);
-            this.lblVolModif.TabIndex = 54;
-            this.lblVolModif.Text = "Modifier Vols";
-            // 
-            // txtDateVoyMod
-            // 
-            this.txtDateVoyMod.Location = new System.Drawing.Point(383, 453);
-            this.txtDateVoyMod.Name = "txtDateVoyMod";
-            this.txtDateVoyMod.Size = new System.Drawing.Size(100, 20);
-            this.txtDateVoyMod.TabIndex = 45;
+            this.txtVolRetour.Enabled = false;
+            this.txtVolRetour.Location = new System.Drawing.Point(107, 136);
+            this.txtVolRetour.Name = "txtVolRetour";
+            this.txtVolRetour.Size = new System.Drawing.Size(260, 20);
+            this.txtVolRetour.TabIndex = 67;
             // 
             // MainMenu
             // 
@@ -815,43 +779,15 @@
         private System.Windows.Forms.Label lblVols;
         private System.Windows.Forms.DataGridView dataGridViewReservations;
         private System.Windows.Forms.TabPage tabDetails;
-        private System.Windows.Forms.DateTimePicker dateTimePickerVoyageur5;
-        private System.Windows.Forms.DateTimePicker dateTimePickerVoyageur4;
-        private System.Windows.Forms.DateTimePicker dateTimePickerVoyageur3;
-        private System.Windows.Forms.DateTimePicker dateTimePickerVoyageur2;
-        private System.Windows.Forms.DateTimePicker dateTimePickerVoyageur1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtPrenomVoyageur5;
-        private System.Windows.Forms.TextBox txtPrenomVoyageur4;
-        private System.Windows.Forms.TextBox txtPrenomVoyageur3;
-        private System.Windows.Forms.TextBox txtPrenomVoyageur2;
-        private System.Windows.Forms.TextBox txtPrenomVoyageur1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtNomVoyageur5;
-        private System.Windows.Forms.TextBox txtNomVoyageur4;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnReinitialiser;
-        private System.Windows.Forms.Button btnReserver;
-        private System.Windows.Forms.Label lblEnterDetailsWarning;
         private System.Windows.Forms.ComboBox cmbDateVolRetour;
-        private System.Windows.Forms.ComboBox cmbVolRetour;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton radioAllerRetour;
         private System.Windows.Forms.RadioButton radioAller;
-        private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.Label lblCADetails;
         private System.Windows.Forms.Label lblPassagersVol;
-        private System.Windows.Forms.TextBox txtNomVoyageur3;
-        private System.Windows.Forms.TextBox txtNomVoyageur2;
-        private System.Windows.Forms.TextBox txtNomVoyageur1;
         private System.Windows.Forms.ComboBox cmbDateVolAller;
         private System.Windows.Forms.ComboBox cmbVolAller;
-        private System.Windows.Forms.Label lblCAVol;
-        private System.Windows.Forms.Label lblPlacesRestantes;
-        private System.Windows.Forms.Label lblOccupation;
-        private System.Windows.Forms.Label lblNbPassagers;
         private System.Windows.Forms.Label lblDateVolDetails;
         private System.Windows.Forms.Label lblVolDetails;
         private System.Windows.Forms.TabPage tabPage1;
@@ -878,5 +814,31 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cmbListeVolsReserves;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DateTimePicker dateTimePickerVoyageur5;
+        private System.Windows.Forms.DateTimePicker dateTimePickerVoyageur4;
+        private System.Windows.Forms.DateTimePicker dateTimePickerVoyageur3;
+        private System.Windows.Forms.DateTimePicker dateTimePickerVoyageur2;
+        private System.Windows.Forms.DateTimePicker dateTimePickerVoyageur1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtPrenomVoyageur5;
+        private System.Windows.Forms.TextBox txtPrenomVoyageur4;
+        private System.Windows.Forms.TextBox txtPrenomVoyageur3;
+        private System.Windows.Forms.TextBox txtPrenomVoyageur2;
+        private System.Windows.Forms.TextBox txtPrenomVoyageur1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtNomVoyageur5;
+        private System.Windows.Forms.TextBox txtNomVoyageur4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Label lblCADetails;
+        private System.Windows.Forms.TextBox txtNomVoyageur3;
+        private System.Windows.Forms.TextBox txtNomVoyageur2;
+        private System.Windows.Forms.TextBox txtNomVoyageur1;
+        private System.Windows.Forms.Label lblCAVol;
+        private System.Windows.Forms.Label lblPlacesRestantes;
+        private System.Windows.Forms.Label lblOccupation;
+        private System.Windows.Forms.Label lblNbPassagers;
+        private System.Windows.Forms.TextBox txtVolRetour;
     }
 }

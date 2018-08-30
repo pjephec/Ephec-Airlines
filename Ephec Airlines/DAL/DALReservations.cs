@@ -4,12 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
-{
-    class Program
+namespace DataAccessLayer {
+    public class DALReservations
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }

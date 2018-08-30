@@ -1,0 +1,1148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AirlinesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accompagnateur">
+          <Key>
+            <PropertyRef Name="ACC_ID" />
+          </Key>
+          <Property Name="ACC_ID" Type="int" Nullable="false" />
+          <Property Name="ACC_NOM" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACC_PRENOM" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACC_RES_ID" Type="int" Nullable="false" />
+          <Property Name="ACC_DATE_NAISSANCE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AllerRetour">
+          <Key>
+            <PropertyRef Name="AR_ID" />
+          </Key>
+          <Property Name="AR_ID" Type="int" Nullable="false" />
+          <Property Name="AR_ALLER_RES_ID" Type="int" Nullable="false" />
+          <Property Name="AR_RETOUR_RES_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="CLIENT_ID" />
+          </Key>
+          <Property Name="CLIENT_ID" Type="int" Nullable="false" />
+          <Property Name="CLIENT_NOM" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CLIENT_PRENOM" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CLIENT_DATE_NAISSANCE" Type="date" Nullable="false" />
+          <Property Name="CLIENT_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Planning">
+          <Key>
+            <PropertyRef Name="PLAN_ID" />
+          </Key>
+          <Property Name="PLAN_ID" Type="int" Nullable="false" />
+          <Property Name="PLAN_VOL_DATE" Type="date" Nullable="false" />
+          <Property Name="PLAN_VOL_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="RES_ID" />
+          </Key>
+          <Property Name="RES_ID" Type="int" Nullable="false" />
+          <Property Name="RES_PRIX" Type="float" />
+          <Property Name="RES_PLAN_ID" Type="int" Nullable="false" />
+          <Property Name="RES_CLIENT_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tranche">
+          <Key>
+            <PropertyRef Name="TRA_ID" />
+          </Key>
+          <Property Name="TRA_ID" Type="int" Nullable="false" />
+          <Property Name="TRA_LIM_INF" Type="int" Nullable="false" />
+          <Property Name="TRA_LIM_SUP" Type="int" Nullable="false" />
+          <Property Name="TRA_PRIX" Type="int" Nullable="false" />
+          <Property Name="TRA_VOL_ID" Type="int" Nullable="false" />
+          <Property Name="TRA_PERIODE_DEB" Type="date" Nullable="false" />
+          <Property Name="TRA_PERIODE_FIN" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ville">
+          <Key>
+            <PropertyRef Name="VILLE_ID" />
+          </Key>
+          <Property Name="VILLE_ID" Type="int" Nullable="false" />
+          <Property Name="VILLE_CODE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VILLE_LIBELLE" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vol">
+          <Key>
+            <PropertyRef Name="VOL_ID" />
+          </Key>
+          <Property Name="VOL_ID" Type="int" Nullable="false" />
+          <Property Name="VOL_CODE" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="VOL_ID_VILLE_DEP" Type="int" Nullable="false" />
+          <Property Name="VOL_ID_VILLE_ARR" Type="int" />
+          <Property Name="VOL_DATE" Type="date" Nullable="false" />
+          <Property Name="VOL_PLACES_DISP" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Accompagnateur_Reservation">
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
+          <End Role="Accompagnateur" Type="Self.Accompagnateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservation">
+              <PropertyRef Name="RES_ID" />
+            </Principal>
+            <Dependent Role="Accompagnateur">
+              <PropertyRef Name="ACC_RES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ALLERRETOUR_RESERVATION_RETOUR">
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
+          <End Role="AllerRetour" Type="Self.AllerRetour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservation">
+              <PropertyRef Name="RES_ID" />
+            </Principal>
+            <Dependent Role="AllerRetour">
+              <PropertyRef Name="AR_ALLER_RES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AllerRetour_Reservation1">
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
+          <End Role="AllerRetour" Type="Self.AllerRetour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservation">
+              <PropertyRef Name="RES_ID" />
+            </Principal>
+            <Dependent Role="AllerRetour">
+              <PropertyRef Name="AR_ALLER_RES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Planning_Vol2">
+          <End Role="Vol" Type="Self.Vol" Multiplicity="1" />
+          <End Role="Planning" Type="Self.Planning" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vol">
+              <PropertyRef Name="VOL_ID" />
+            </Principal>
+            <Dependent Role="Planning">
+              <PropertyRef Name="PLAN_VOL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservation_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="CLIENT_ID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="RES_CLIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservation_Planning2">
+          <End Role="Planning" Type="Self.Planning" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Planning">
+              <PropertyRef Name="PLAN_ID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="RES_PLAN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tranche_Vol">
+          <End Role="Vol" Type="Self.Vol" Multiplicity="1" />
+          <End Role="Tranche" Type="Self.Tranche" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vol">
+              <PropertyRef Name="VOL_ID" />
+            </Principal>
+            <Dependent Role="Tranche">
+              <PropertyRef Name="TRA_VOL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vol_Ville_Arrivee">
+          <End Role="Ville" Type="Self.Ville" Multiplicity="0..1" />
+          <End Role="Vol" Type="Self.Vol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="VILLE_ID" />
+            </Principal>
+            <Dependent Role="Vol">
+              <PropertyRef Name="VOL_ID_VILLE_ARR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vol_Ville_Depart">
+          <End Role="Ville" Type="Self.Ville" Multiplicity="1" />
+          <End Role="Vol" Type="Self.Vol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="VILLE_ID" />
+            </Principal>
+            <Dependent Role="Vol">
+              <PropertyRef Name="VOL_ID_VILLE_DEP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ACC_DeleteAccompagnateur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdAccompagnateur" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ACC_DeleteByResId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdReservation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ACC_GetAccompagnateurChiffreParTete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdReservation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ACC_GetAccompagnateursWithPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdReservation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ACC_GetAccResId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdAccompagnateur" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ACC_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="Nom" Type="varchar" Mode="In" />
+          <Parameter Name="Prenom" Type="varchar" Mode="In" />
+          <Parameter Name="DateNaissance" Type="date" Mode="In" />
+          <Parameter Name="IdReservation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ACC_InsertNullPrenom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="Nom" Type="varchar" Mode="In" />
+          <Parameter Name="DateNaissance" Type="date" Mode="In" />
+          <Parameter Name="IdReservation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AR_DeleteARById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdAr" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AR_GetArId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdReservation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AR_InsertAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdReservationAller" Type="int" Mode="In" />
+          <Parameter Name="IdReservationRetour" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CLI_FetchTousClients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline" />
+        <Function Name="CLI_GetClientMoneyInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdClient" Type="int" Mode="In" />
+          <Parameter Name="IdReservation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CLI_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline" />
+        <Function Name="Client_Add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline" />
+        <Function Name="PLA_GetDateByVolId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdVol" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PLA_GetDateByVolIdDateCritere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdVol" Type="int" Mode="In" />
+          <Parameter Name="Date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="PLA_GetDatesMemeVol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdVol" Type="int" Mode="In" />
+          <Parameter Name="IdPlanning" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PLA_GetDatesMemeVolWithPlaId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdVol" Type="int" Mode="In" />
+          <Parameter Name="IdPlanning" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RES_DeleteResId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdReservation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RES_GetAller" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="Date" Type="date" Mode="In" />
+          <Parameter Name="IdClient" Type="int" Mode="In" />
+          <Parameter Name="IdVilleDepart" Type="int" Mode="In" />
+          <Parameter Name="IdVilleRetour" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RES_GetPrixTotal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdReservation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RES_GetResByClientId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdClient" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RES_GetResId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdClient" Type="int" Mode="In" />
+          <Parameter Name="IdPlanning" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RES_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdClient" Type="int" Mode="In" />
+          <Parameter Name="IdPlanning" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RES_UpdateReservationResId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdReservation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="VOL_PLA_GetNbPlacesRestantesNEW" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdVol" Type="int" Mode="In" />
+          <Parameter Name="IdPlanning" Type="int" Mode="In" />
+        </Function>
+        <Function Name="VOL_SelectAllListChoix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline" />
+        <Function Name="VOL_SelectAllListChoixRetour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="clientAirline">
+          <Parameter Name="IdVilleDepart" Type="int" Mode="In" />
+          <Parameter Name="IdVilleRetour" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="AirlinesModelStoreContainer">
+          <EntitySet Name="Accompagnateur" EntityType="Self.Accompagnateur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AllerRetour" EntityType="Self.AllerRetour" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Planning" EntityType="Self.Planning" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tranche" EntityType="Self.Tranche" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ville" EntityType="Self.Ville" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vol" EntityType="Self.Vol" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Accompagnateur_Reservation" Association="Self.FK_Accompagnateur_Reservation">
+            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="Accompagnateur" EntitySet="Accompagnateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ALLERRETOUR_RESERVATION_RETOUR" Association="Self.FK_ALLERRETOUR_RESERVATION_RETOUR">
+            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="AllerRetour" EntitySet="AllerRetour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AllerRetour_Reservation1" Association="Self.FK_AllerRetour_Reservation1">
+            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="AllerRetour" EntitySet="AllerRetour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Planning_Vol2" Association="Self.FK_Planning_Vol2">
+            <End Role="Vol" EntitySet="Vol" />
+            <End Role="Planning" EntitySet="Planning" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservation_Client" Association="Self.FK_Reservation_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservation_Planning2" Association="Self.FK_Reservation_Planning2">
+            <End Role="Planning" EntitySet="Planning" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tranche_Vol" Association="Self.FK_Tranche_Vol">
+            <End Role="Vol" EntitySet="Vol" />
+            <End Role="Tranche" EntitySet="Tranche" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vol_Ville_Arrivee" Association="Self.FK_Vol_Ville_Arrivee">
+            <End Role="Ville" EntitySet="Ville" />
+            <End Role="Vol" EntitySet="Vol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vol_Ville_Depart" Association="Self.FK_Vol_Ville_Depart">
+            <End Role="Ville" EntitySet="Ville" />
+            <End Role="Vol" EntitySet="Vol" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AirlinesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Accompagnateur">
+          <Key>
+            <PropertyRef Name="ACC_ID" />
+          </Key>
+          <Property Name="ACC_ID" Type="Int32" Nullable="false" />
+          <Property Name="ACC_NOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACC_PRENOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACC_RES_ID" Type="Int32" Nullable="false" />
+          <Property Name="ACC_DATE_NAISSANCE" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Reservation" Relationship="Self.FK_Accompagnateur_Reservation" FromRole="Accompagnateur" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="AllerRetour">
+          <Key>
+            <PropertyRef Name="AR_ID" />
+          </Key>
+          <Property Name="AR_ID" Type="Int32" Nullable="false" />
+          <Property Name="AR_ALLER_RES_ID" Type="Int32" Nullable="false" />
+          <Property Name="AR_RETOUR_RES_ID" Type="Int32" />
+          <NavigationProperty Name="Reservation" Relationship="Self.FK_ALLERRETOUR_RESERVATION_RETOUR" FromRole="AllerRetour" ToRole="Reservation" />
+          <NavigationProperty Name="Reservation1" Relationship="Self.FK_AllerRetour_Reservation1" FromRole="AllerRetour" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="CLIENT_ID" />
+          </Key>
+          <Property Name="CLIENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="CLIENT_NOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLIENT_PRENOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLIENT_DATE_NAISSANCE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CLIENT_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reservation" Relationship="Self.FK_Reservation_Client" FromRole="Client" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="Planning">
+          <Key>
+            <PropertyRef Name="PLAN_ID" />
+          </Key>
+          <Property Name="PLAN_ID" Type="Int32" Nullable="false" />
+          <Property Name="PLAN_VOL_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PLAN_VOL_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Vol" Relationship="Self.FK_Planning_Vol2" FromRole="Planning" ToRole="Vol" />
+          <NavigationProperty Name="Reservation" Relationship="Self.FK_Reservation_Planning2" FromRole="Planning" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="RES_ID" />
+          </Key>
+          <Property Name="RES_ID" Type="Int32" Nullable="false" />
+          <Property Name="RES_PRIX" Type="Double" />
+          <Property Name="RES_PLAN_ID" Type="Int32" Nullable="false" />
+          <Property Name="RES_CLIENT_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Accompagnateur" Relationship="Self.FK_Accompagnateur_Reservation" FromRole="Reservation" ToRole="Accompagnateur" />
+          <NavigationProperty Name="AllerRetour" Relationship="Self.FK_ALLERRETOUR_RESERVATION_RETOUR" FromRole="Reservation" ToRole="AllerRetour" />
+          <NavigationProperty Name="AllerRetour1" Relationship="Self.FK_AllerRetour_Reservation1" FromRole="Reservation" ToRole="AllerRetour" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Reservation_Client" FromRole="Reservation" ToRole="Client" />
+          <NavigationProperty Name="Planning" Relationship="Self.FK_Reservation_Planning2" FromRole="Reservation" ToRole="Planning" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tranche">
+          <Key>
+            <PropertyRef Name="TRA_ID" />
+          </Key>
+          <Property Name="TRA_ID" Type="Int32" Nullable="false" />
+          <Property Name="TRA_LIM_INF" Type="Int32" Nullable="false" />
+          <Property Name="TRA_LIM_SUP" Type="Int32" Nullable="false" />
+          <Property Name="TRA_PRIX" Type="Int32" Nullable="false" />
+          <Property Name="TRA_VOL_ID" Type="Int32" Nullable="false" />
+          <Property Name="TRA_PERIODE_DEB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TRA_PERIODE_FIN" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Vol" Relationship="Self.FK_Tranche_Vol" FromRole="Tranche" ToRole="Vol" />
+        </EntityType>
+        <EntityType Name="Ville">
+          <Key>
+            <PropertyRef Name="VILLE_ID" />
+          </Key>
+          <Property Name="VILLE_ID" Type="Int32" Nullable="false" />
+          <Property Name="VILLE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VILLE_LIBELLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Vol" Relationship="Self.FK_Vol_Ville_Arrivee" FromRole="Ville" ToRole="Vol" />
+          <NavigationProperty Name="Vol1" Relationship="Self.FK_Vol_Ville_Depart" FromRole="Ville" ToRole="Vol" />
+        </EntityType>
+        <EntityType Name="Vol">
+          <Key>
+            <PropertyRef Name="VOL_ID" />
+          </Key>
+          <Property Name="VOL_ID" Type="Int32" Nullable="false" />
+          <Property Name="VOL_CODE" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="VOL_ID_VILLE_DEP" Type="Int32" Nullable="false" />
+          <Property Name="VOL_ID_VILLE_ARR" Type="Int32" />
+          <Property Name="VOL_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="VOL_PLACES_DISP" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Planning" Relationship="Self.FK_Planning_Vol2" FromRole="Vol" ToRole="Planning" />
+          <NavigationProperty Name="Tranche" Relationship="Self.FK_Tranche_Vol" FromRole="Vol" ToRole="Tranche" />
+          <NavigationProperty Name="Ville" Relationship="Self.FK_Vol_Ville_Arrivee" FromRole="Vol" ToRole="Ville" />
+          <NavigationProperty Name="Ville1" Relationship="Self.FK_Vol_Ville_Depart" FromRole="Vol" ToRole="Ville" />
+        </EntityType>
+        <Association Name="FK_Accompagnateur_Reservation">
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
+          <End Role="Accompagnateur" Type="Self.Accompagnateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservation">
+              <PropertyRef Name="RES_ID" />
+            </Principal>
+            <Dependent Role="Accompagnateur">
+              <PropertyRef Name="ACC_RES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ALLERRETOUR_RESERVATION_RETOUR">
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
+          <End Role="AllerRetour" Type="Self.AllerRetour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservation">
+              <PropertyRef Name="RES_ID" />
+            </Principal>
+            <Dependent Role="AllerRetour">
+              <PropertyRef Name="AR_ALLER_RES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AllerRetour_Reservation1">
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
+          <End Role="AllerRetour" Type="Self.AllerRetour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservation">
+              <PropertyRef Name="RES_ID" />
+            </Principal>
+            <Dependent Role="AllerRetour">
+              <PropertyRef Name="AR_ALLER_RES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservation_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="CLIENT_ID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="RES_CLIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Planning_Vol2">
+          <End Role="Vol" Type="Self.Vol" Multiplicity="1" />
+          <End Role="Planning" Type="Self.Planning" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vol">
+              <PropertyRef Name="VOL_ID" />
+            </Principal>
+            <Dependent Role="Planning">
+              <PropertyRef Name="PLAN_VOL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservation_Planning2">
+          <End Role="Planning" Type="Self.Planning" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Planning">
+              <PropertyRef Name="PLAN_ID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="RES_PLAN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tranche_Vol">
+          <End Role="Vol" Type="Self.Vol" Multiplicity="1" />
+          <End Role="Tranche" Type="Self.Tranche" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vol">
+              <PropertyRef Name="VOL_ID" />
+            </Principal>
+            <Dependent Role="Tranche">
+              <PropertyRef Name="TRA_VOL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vol_Ville_Arrivee">
+          <End Role="Ville" Type="Self.Ville" Multiplicity="0..1" />
+          <End Role="Vol" Type="Self.Vol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="VILLE_ID" />
+            </Principal>
+            <Dependent Role="Vol">
+              <PropertyRef Name="VOL_ID_VILLE_ARR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vol_Ville_Depart">
+          <End Role="Ville" Type="Self.Ville" Multiplicity="1" />
+          <End Role="Vol" Type="Self.Vol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="VILLE_ID" />
+            </Principal>
+            <Dependent Role="Vol">
+              <PropertyRef Name="VOL_ID_VILLE_DEP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AirlinesEntities" annotation:LazyLoadingEnabled="true" a:TypeAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+          <EntitySet Name="Accompagnateur" EntityType="Self.Accompagnateur" />
+          <EntitySet Name="AllerRetour" EntityType="Self.AllerRetour" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Planning" EntityType="Self.Planning" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tranche" EntityType="Self.Tranche" />
+          <EntitySet Name="Ville" EntityType="Self.Ville" />
+          <EntitySet Name="Vol" EntityType="Self.Vol" />
+          <AssociationSet Name="FK_Accompagnateur_Reservation" Association="Self.FK_Accompagnateur_Reservation">
+            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="Accompagnateur" EntitySet="Accompagnateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ALLERRETOUR_RESERVATION_RETOUR" Association="Self.FK_ALLERRETOUR_RESERVATION_RETOUR">
+            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="AllerRetour" EntitySet="AllerRetour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AllerRetour_Reservation1" Association="Self.FK_AllerRetour_Reservation1">
+            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="AllerRetour" EntitySet="AllerRetour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservation_Client" Association="Self.FK_Reservation_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Planning_Vol2" Association="Self.FK_Planning_Vol2">
+            <End Role="Vol" EntitySet="Vol" />
+            <End Role="Planning" EntitySet="Planning" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservation_Planning2" Association="Self.FK_Reservation_Planning2">
+            <End Role="Planning" EntitySet="Planning" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tranche_Vol" Association="Self.FK_Tranche_Vol">
+            <End Role="Vol" EntitySet="Vol" />
+            <End Role="Tranche" EntitySet="Tranche" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vol_Ville_Arrivee" Association="Self.FK_Vol_Ville_Arrivee">
+            <End Role="Ville" EntitySet="Ville" />
+            <End Role="Vol" EntitySet="Vol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vol_Ville_Depart" Association="Self.FK_Vol_Ville_Depart">
+            <End Role="Ville" EntitySet="Ville" />
+            <End Role="Vol" EntitySet="Vol" />
+          </AssociationSet>
+          <FunctionImport Name="ACC_DeleteAccompagnateur">
+          <Parameter Name="IdAccompagnateur" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ACC_DeleteByResId">
+          <Parameter Name="IdReservation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ACC_GetAccompagnateurChiffreParTete" ReturnType="Collection(AirlinesModel.ACC_GetAccompagnateurChiffreParTete_Result)">
+          <Parameter Name="IdReservation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ACC_GetAccompagnateursWithPrice" ReturnType="Collection(AirlinesModel.ACC_GetAccompagnateursWithPrice_Result)">
+          <Parameter Name="IdReservation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ACC_GetAccResId" ReturnType="Collection(Int32)">
+          <Parameter Name="IdAccompagnateur" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ACC_Insert">
+            <Parameter Name="Nom" Mode="In" Type="String" />
+            <Parameter Name="Prenom" Mode="In" Type="String" />
+            <Parameter Name="DateNaissance" Mode="In" Type="DateTime" />
+            <Parameter Name="IdReservation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ACC_InsertNullPrenom">
+            <Parameter Name="Nom" Mode="In" Type="String" />
+            <Parameter Name="DateNaissance" Mode="In" Type="DateTime" />
+            <Parameter Name="IdReservation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AR_DeleteARById">
+          <Parameter Name="IdAr" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AR_GetArId" ReturnType="Collection(Int32)">
+          <Parameter Name="IdReservation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AR_InsertAR">
+            <Parameter Name="IdReservationAller" Mode="In" Type="Int32" />
+            <Parameter Name="IdReservationRetour" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CLI_FetchTousClients" ReturnType="Collection(AirlinesModel.CLI_FetchTousClients_Result)" />
+          <FunctionImport Name="CLI_GetClientMoneyInfo" ReturnType="Collection(AirlinesModel.CLI_GetClientMoneyInfo_Result)">
+            <Parameter Name="IdClient" Mode="In" Type="Int32" />
+            <Parameter Name="IdReservation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CLI_SelectAll" ReturnType="Collection(AirlinesModel.CLI_SelectAll_Result)" />
+          <FunctionImport Name="Client_Add" ReturnType="Collection(AirlinesModel.Client_Add_Result)" />
+          <FunctionImport Name="PLA_GetDateByVolId" ReturnType="Collection(AirlinesModel.PLA_GetDateByVolId_Result)">
+          <Parameter Name="IdVol" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PLA_GetDateByVolIdDateCritere" ReturnType="Collection(AirlinesModel.PLA_GetDateByVolIdDateCritere_Result)">
+            <Parameter Name="IdVol" Mode="In" Type="Int32" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="PLA_GetDatesMemeVol" ReturnType="Collection(DateTime)">
+            <Parameter Name="IdVol" Mode="In" Type="Int32" />
+            <Parameter Name="IdPlanning" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PLA_GetDatesMemeVolWithPlaId" ReturnType="Collection(AirlinesModel.PLA_GetDatesMemeVolWithPlaId_Result)">
+            <Parameter Name="IdVol" Mode="In" Type="Int32" />
+            <Parameter Name="IdPlanning" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RES_DeleteResId">
+          <Parameter Name="IdReservation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RES_GetAller" ReturnType="Collection(AirlinesModel.RES_GetAller_Result)">
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="IdClient" Mode="In" Type="Int32" />
+            <Parameter Name="IdVilleDepart" Mode="In" Type="Int32" />
+            <Parameter Name="IdVilleRetour" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RES_GetPrixTotal" ReturnType="Collection(Double)">
+          <Parameter Name="IdReservation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RES_GetResByClientId" ReturnType="Collection(AirlinesModel.RES_GetResByClientId_Result)">
+          <Parameter Name="IdClient" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RES_GetResId" ReturnType="Collection(Int32)">
+            <Parameter Name="IdClient" Mode="In" Type="Int32" />
+            <Parameter Name="IdPlanning" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RES_Insert">
+            <Parameter Name="IdClient" Mode="In" Type="Int32" />
+            <Parameter Name="IdPlanning" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RES_UpdateReservationResId">
+          <Parameter Name="IdReservation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="VOL_PLA_GetNbPlacesRestantesNEW" ReturnType="Collection(Int32)">
+            <Parameter Name="IdVol" Mode="In" Type="Int32" />
+            <Parameter Name="IdPlanning" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="VOL_SelectAllListChoix" ReturnType="Collection(AirlinesModel.VOL_SelectAllListChoix_Result)" />
+          <FunctionImport Name="VOL_SelectAllListChoixRetour" ReturnType="Collection(AirlinesModel.VOL_SelectAllListChoixRetour_Result)">
+            <Parameter Name="IdVilleDepart" Mode="In" Type="Int32" />
+            <Parameter Name="IdVilleRetour" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(AirlinesModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(AirlinesModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ACC_GetAccompagnateurChiffreParTete_Result">
+          <Property Type="Int32" Name="ACC_ID" Nullable="false" />
+          <Property Type="String" Name="ACC_NOM" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ACC_PRENOM" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="ACC_DATE_NAISSANCE" Nullable="false" />
+          <Property Type="Int32" Name="TRA_PRIX" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ACC_GetAccompagnateursWithPrice_Result">
+          <Property Type="Int32" Name="ACC_ID" Nullable="false" />
+          <Property Type="String" Name="ACC_NOM" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ACC_PRENOM" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="ACC_DATE_NAISSANCE" Nullable="false" />
+          <Property Type="Int32" Name="ACC_RES_ID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="CLI_FetchTousClients_Result">
+          <Property Type="Int32" Name="CLIENT_ID" Nullable="false" />
+          <Property Type="String" Name="CLIENT_NOM" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CLIENT_PRENOM" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CLIENT_CODE" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="CLIENT_DATE_NAISSANCE" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="CLI_GetClientMoneyInfo_Result">
+          <Property Type="Int32" Name="TRA_PRIX" Nullable="false" />
+          <Property Type="Double" Name="RES_PRIX" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CLI_SelectAll_Result">
+          <Property Type="Int32" Name="CLIENT_ID" Nullable="false" />
+          <Property Type="String" Name="CLIENT_NOM" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CLIENT_PRENOM" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CLIENT_CODE" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="CLIENT_DATE_NAISSANCE" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Client_Add_Result">
+          <Property Type="Int32" Name="ACC_ID" Nullable="false" />
+          <Property Type="String" Name="ACC_NOM" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ACC_PRENOM" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="ACC_RES_ID" Nullable="false" />
+          <Property Type="DateTime" Name="ACC_DATE_NAISSANCE" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PLA_GetDateByVolId_Result">
+          <Property Type="Int32" Name="PLAN_ID" Nullable="false" />
+          <Property Type="DateTime" Name="PLAN_VOL_DATE" Nullable="false" />
+          <Property Type="Int32" Name="PLAN_VOL_ID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PLA_GetDateByVolIdDateCritere_Result">
+          <Property Type="Int32" Name="PLAN_ID" Nullable="false" />
+          <Property Type="DateTime" Name="PLAN_VOL_DATE" Nullable="false" />
+          <Property Type="Int32" Name="PLAN_VOL_ID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PLA_GetDatesMemeVolWithPlaId_Result">
+          <Property Type="DateTime" Name="PLAN_VOL_DATE" Nullable="false" />
+          <Property Type="Int32" Name="PLAN_ID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="RES_GetAller_Result">
+          <Property Type="Int32" Name="RES_ID" Nullable="true" />
+          <Property Type="Int32" Name="RES_CLIENT_ID" Nullable="true" />
+          <Property Type="DateTime" Name="PLAN_VOL_DATE" Nullable="true" />
+          <Property Type="Int32" Name="Column1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RES_GetResByClientId_Result">
+          <Property Type="Int32" Name="RES_ID" Nullable="false" />
+          <Property Type="Double" Name="RES_PRIX" Nullable="true" />
+          <Property Type="DateTime" Name="PLAN_VOL_DATE" Nullable="false" />
+          <Property Type="String" Name="VOL_CODE" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="VILLE_LIBELLE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="VILLE_LIBELLE_AR" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="VOL_SelectAllListChoix_Result">
+          <Property Type="Int32" Name="VOL_ID" Nullable="false" />
+          <Property Type="String" Name="VOL_CODE" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="VOL_PLACES_DISP" Nullable="false" />
+          <Property Type="Int32" Name="VOL_ID_VILLE_DEP" Nullable="false" />
+          <Property Type="Int32" Name="VOL_ID_VILLE_ARR" Nullable="true" />
+          <Property Type="String" Name="LIB_VOL" Nullable="false" MaxLength="103" />
+        </ComplexType>
+        <ComplexType Name="VOL_SelectAllListChoixRetour_Result">
+          <Property Type="Int32" Name="VOL_ID" Nullable="false" />
+          <Property Type="String" Name="VOL_CODE" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="VOL_PLACES_DISP" Nullable="false" />
+          <Property Type="Int32" Name="VOL_ID_VILLE_DEP" Nullable="false" />
+          <Property Type="Int32" Name="VOL_ID_VILLE_ARR" Nullable="true" />
+          <Property Type="String" Name="LIB_VOL" Nullable="false" MaxLength="103" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AirlinesModelStoreContainer" CdmEntityContainer="AirlinesEntities">
+          <EntitySetMapping Name="Accompagnateur">
+            <EntityTypeMapping TypeName="AirlinesModel.Accompagnateur">
+              <MappingFragment StoreEntitySet="Accompagnateur">
+                <ScalarProperty Name="ACC_ID" ColumnName="ACC_ID" />
+                <ScalarProperty Name="ACC_NOM" ColumnName="ACC_NOM" />
+                <ScalarProperty Name="ACC_PRENOM" ColumnName="ACC_PRENOM" />
+                <ScalarProperty Name="ACC_RES_ID" ColumnName="ACC_RES_ID" />
+                <ScalarProperty Name="ACC_DATE_NAISSANCE" ColumnName="ACC_DATE_NAISSANCE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllerRetour">
+            <EntityTypeMapping TypeName="AirlinesModel.AllerRetour">
+              <MappingFragment StoreEntitySet="AllerRetour">
+                <ScalarProperty Name="AR_ID" ColumnName="AR_ID" />
+                <ScalarProperty Name="AR_ALLER_RES_ID" ColumnName="AR_ALLER_RES_ID" />
+                <ScalarProperty Name="AR_RETOUR_RES_ID" ColumnName="AR_RETOUR_RES_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="AirlinesModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+                <ScalarProperty Name="CLIENT_NOM" ColumnName="CLIENT_NOM" />
+                <ScalarProperty Name="CLIENT_PRENOM" ColumnName="CLIENT_PRENOM" />
+                <ScalarProperty Name="CLIENT_DATE_NAISSANCE" ColumnName="CLIENT_DATE_NAISSANCE" />
+                <ScalarProperty Name="CLIENT_CODE" ColumnName="CLIENT_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Planning">
+            <EntityTypeMapping TypeName="AirlinesModel.Planning">
+              <MappingFragment StoreEntitySet="Planning">
+                <ScalarProperty Name="PLAN_ID" ColumnName="PLAN_ID" />
+                <ScalarProperty Name="PLAN_VOL_DATE" ColumnName="PLAN_VOL_DATE" />
+                <ScalarProperty Name="PLAN_VOL_ID" ColumnName="PLAN_VOL_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservation">
+            <EntityTypeMapping TypeName="AirlinesModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="RES_ID" ColumnName="RES_ID" />
+                <ScalarProperty Name="RES_PRIX" ColumnName="RES_PRIX" />
+                <ScalarProperty Name="RES_PLAN_ID" ColumnName="RES_PLAN_ID" />
+                <ScalarProperty Name="RES_CLIENT_ID" ColumnName="RES_CLIENT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AirlinesModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tranche">
+            <EntityTypeMapping TypeName="AirlinesModel.Tranche">
+              <MappingFragment StoreEntitySet="Tranche">
+                <ScalarProperty Name="TRA_ID" ColumnName="TRA_ID" />
+                <ScalarProperty Name="TRA_LIM_INF" ColumnName="TRA_LIM_INF" />
+                <ScalarProperty Name="TRA_LIM_SUP" ColumnName="TRA_LIM_SUP" />
+                <ScalarProperty Name="TRA_PRIX" ColumnName="TRA_PRIX" />
+                <ScalarProperty Name="TRA_VOL_ID" ColumnName="TRA_VOL_ID" />
+                <ScalarProperty Name="TRA_PERIODE_DEB" ColumnName="TRA_PERIODE_DEB" />
+                <ScalarProperty Name="TRA_PERIODE_FIN" ColumnName="TRA_PERIODE_FIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ville">
+            <EntityTypeMapping TypeName="AirlinesModel.Ville">
+              <MappingFragment StoreEntitySet="Ville">
+                <ScalarProperty Name="VILLE_ID" ColumnName="VILLE_ID" />
+                <ScalarProperty Name="VILLE_CODE" ColumnName="VILLE_CODE" />
+                <ScalarProperty Name="VILLE_LIBELLE" ColumnName="VILLE_LIBELLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vol">
+            <EntityTypeMapping TypeName="AirlinesModel.Vol">
+              <MappingFragment StoreEntitySet="Vol">
+                <ScalarProperty Name="VOL_ID" ColumnName="VOL_ID" />
+                <ScalarProperty Name="VOL_CODE" ColumnName="VOL_CODE" />
+                <ScalarProperty Name="VOL_ID_VILLE_DEP" ColumnName="VOL_ID_VILLE_DEP" />
+                <ScalarProperty Name="VOL_ID_VILLE_ARR" ColumnName="VOL_ID_VILLE_ARR" />
+                <ScalarProperty Name="VOL_DATE" ColumnName="VOL_DATE" />
+                <ScalarProperty Name="VOL_PLACES_DISP" ColumnName="VOL_PLACES_DISP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ACC_DeleteAccompagnateur" FunctionName="AirlinesModel.Store.ACC_DeleteAccompagnateur" />
+          <FunctionImportMapping FunctionImportName="ACC_DeleteByResId" FunctionName="AirlinesModel.Store.ACC_DeleteByResId" />
+          <FunctionImportMapping FunctionImportName="ACC_GetAccompagnateurChiffreParTete" FunctionName="AirlinesModel.Store.ACC_GetAccompagnateurChiffreParTete">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AirlinesModel.ACC_GetAccompagnateurChiffreParTete_Result">
+                <ScalarProperty Name="ACC_ID" ColumnName="ACC_ID" />
+                <ScalarProperty Name="ACC_NOM" ColumnName="ACC_NOM" />
+                <ScalarProperty Name="ACC_PRENOM" ColumnName="ACC_PRENOM" />
+                <ScalarProperty Name="ACC_DATE_NAISSANCE" ColumnName="ACC_DATE_NAISSANCE" />
+                <ScalarProperty Name="TRA_PRIX" ColumnName="TRA_PRIX" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ACC_GetAccompagnateursWithPrice" FunctionName="AirlinesModel.Store.ACC_GetAccompagnateursWithPrice">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AirlinesModel.ACC_GetAccompagnateursWithPrice_Result">
+                <ScalarProperty Name="ACC_ID" ColumnName="ACC_ID" />
+                <ScalarProperty Name="ACC_NOM" ColumnName="ACC_NOM" />
+                <ScalarProperty Name="ACC_PRENOM" ColumnName="ACC_PRENOM" />
+                <ScalarProperty Name="ACC_DATE_NAISSANCE" ColumnName="ACC_DATE_NAISSANCE" />
+                <ScalarProperty Name="ACC_RES_ID" ColumnName="ACC_RES_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ACC_GetAccResId" FunctionName="AirlinesModel.Store.ACC_GetAccResId" />
+          <FunctionImportMapping FunctionImportName="ACC_Insert" FunctionName="AirlinesModel.Store.ACC_Insert" />
+          <FunctionImportMapping FunctionImportName="ACC_InsertNullPrenom" FunctionName="AirlinesModel.Store.ACC_InsertNullPrenom" />
+          <FunctionImportMapping FunctionImportName="AR_DeleteARById" FunctionName="AirlinesModel.Store.AR_DeleteARById" />
+          <FunctionImportMapping FunctionImportName="AR_GetArId" FunctionName="AirlinesModel.Store.AR_GetArId" />
+          <FunctionImportMapping FunctionImportName="AR_InsertAR" FunctionName="AirlinesModel.Store.AR_InsertAR" />
+          <FunctionImportMapping FunctionImportName="CLI_FetchTousClients" FunctionName="AirlinesModel.Store.CLI_FetchTousClients">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AirlinesModel.CLI_FetchTousClients_Result">
+                <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+                <ScalarProperty Name="CLIENT_NOM" ColumnName="CLIENT_NOM" />
+                <ScalarProperty Name="CLIENT_PRENOM" ColumnName="CLIENT_PRENOM" />
+                <ScalarProperty Name="CLIENT_CODE" ColumnName="CLIENT_CODE" />
+                <ScalarProperty Name="CLIENT_DATE_NAISSANCE" ColumnName="CLIENT_DATE_NAISSANCE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CLI_GetClientMoneyInfo" FunctionName="AirlinesModel.Store.CLI_GetClientMoneyInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AirlinesModel.CLI_GetClientMoneyInfo_Result">
+                <ScalarProperty Name="TRA_PRIX" ColumnName="TRA_PRIX" />
+                <ScalarProperty Name="RES_PRIX" ColumnName="RES_PRIX" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CLI_SelectAll" FunctionName="AirlinesModel.Store.CLI_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AirlinesModel.CLI_SelectAll_Result">
+                <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+                <ScalarProperty Name="CLIENT_NOM" ColumnName="CLIENT_NOM" />
+                <ScalarProperty Name="CLIENT_PRENOM" ColumnName="CLIENT_PRENOM" />
+                <ScalarProperty Name="CLIENT_CODE" ColumnName="CLIENT_CODE" />
+                <ScalarProperty Name="CLIENT_DATE_NAISSANCE" ColumnName="CLIENT_DATE_NAISSANCE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Client_Add" FunctionName="AirlinesModel.Store.Client_Add">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AirlinesModel.Client_Add_Result">
+                <ScalarProperty Name="ACC_ID" ColumnName="ACC_ID" />
+                <ScalarProperty Name="ACC_NOM" ColumnName="ACC_NOM" />
+                <ScalarProperty Name="ACC_PRENOM" ColumnName="ACC_PRENOM" />
+                <ScalarProperty Name="ACC_RES_ID" ColumnName="ACC_RES_ID" />
+                <ScalarProperty Name="ACC_DATE_NAISSANCE" ColumnName="ACC_DATE_NAISSANCE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PLA_GetDateByVolId" FunctionName="AirlinesModel.Store.PLA_GetDateByVolId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AirlinesModel.PLA_GetDateByVolId_Result">
+                <ScalarProperty Name="PLAN_ID" ColumnName="PLAN_ID" />
+                <ScalarProperty Name="PLAN_VOL_DATE" ColumnName="PLAN_VOL_DATE" />
+                <ScalarProperty Name="PLAN_VOL_ID" ColumnName="PLAN_VOL_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PLA_GetDateByVolIdDateCritere" FunctionName="AirlinesModel.Store.PLA_GetDateByVolIdDateCritere">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AirlinesModel.PLA_GetDateByVolIdDateCritere_Result">
+                <ScalarProperty Name="PLAN_ID" ColumnName="PLAN_ID" />
+                <ScalarProperty Name="PLAN_VOL_DATE" ColumnName="PLAN_VOL_DATE" />
+                <ScalarProperty Name="PLAN_VOL_ID" ColumnName="PLAN_VOL_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PLA_GetDatesMemeVol" FunctionName="AirlinesModel.Store.PLA_GetDatesMemeVol" />
+          <FunctionImportMapping FunctionImportName="PLA_GetDatesMemeVolWithPlaId" FunctionName="AirlinesModel.Store.PLA_GetDatesMemeVolWithPlaId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AirlinesModel.PLA_GetDatesMemeVolWithPlaId_Result">
+                <ScalarProperty Name="PLAN_VOL_DATE" ColumnName="PLAN_VOL_DATE" />
+                <ScalarProperty Name="PLAN_ID" ColumnName="PLAN_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RES_DeleteResId" FunctionName="AirlinesModel.Store.RES_DeleteResId" />
+          <FunctionImportMapping FunctionImportName="RES_GetAller" FunctionName="AirlinesModel.Store.RES_GetAller">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AirlinesModel.RES_GetAller_Result">
+                <ScalarProperty Name="RES_ID" ColumnName="RES_ID" />
+                <ScalarProperty Name="RES_CLIENT_ID" ColumnName="RES_CLIENT_ID" />
+                <ScalarProperty Name="PLAN_VOL_DATE" ColumnName="PLAN_VOL_DATE" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RES_GetPrixTotal" FunctionName="AirlinesModel.Store.RES_GetPrixTotal" />
+          <FunctionImportMapping FunctionImportName="RES_GetResByClientId" FunctionName="AirlinesModel.Store.RES_GetResByClientId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AirlinesModel.RES_GetResByClientId_Result">
+                <ScalarProperty Name="RES_ID" ColumnName="RES_ID" />
+                <ScalarProperty Name="RES_PRIX" ColumnName="RES_PRIX" />
+                <ScalarProperty Name="PLAN_VOL_DATE" ColumnName="PLAN_VOL_DATE" />
+                <ScalarProperty Name="VOL_CODE" ColumnName="VOL_CODE" />
+                <ScalarProperty Name="VILLE_LIBELLE" ColumnName="VILLE_LIBELLE" />
+                <ScalarProperty Name="VILLE_LIBELLE_AR" ColumnName="VILLE_LIBELLE_AR" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RES_GetResId" FunctionName="AirlinesModel.Store.RES_GetResId" />
+          <FunctionImportMapping FunctionImportName="RES_Insert" FunctionName="AirlinesModel.Store.RES_Insert" />
+          <FunctionImportMapping FunctionImportName="RES_UpdateReservationResId" FunctionName="AirlinesModel.Store.RES_UpdateReservationResId" />
+          <FunctionImportMapping FunctionImportName="VOL_PLA_GetNbPlacesRestantesNEW" FunctionName="AirlinesModel.Store.VOL_PLA_GetNbPlacesRestantesNEW" />
+          <FunctionImportMapping FunctionImportName="VOL_SelectAllListChoix" FunctionName="AirlinesModel.Store.VOL_SelectAllListChoix">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AirlinesModel.VOL_SelectAllListChoix_Result">
+                <ScalarProperty Name="VOL_ID" ColumnName="VOL_ID" />
+                <ScalarProperty Name="VOL_CODE" ColumnName="VOL_CODE" />
+                <ScalarProperty Name="VOL_PLACES_DISP" ColumnName="VOL_PLACES_DISP" />
+                <ScalarProperty Name="VOL_ID_VILLE_DEP" ColumnName="VOL_ID_VILLE_DEP" />
+                <ScalarProperty Name="VOL_ID_VILLE_ARR" ColumnName="VOL_ID_VILLE_ARR" />
+                <ScalarProperty Name="LIB_VOL" ColumnName="LIB_VOL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="VOL_SelectAllListChoixRetour" FunctionName="AirlinesModel.Store.VOL_SelectAllListChoixRetour">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AirlinesModel.VOL_SelectAllListChoixRetour_Result">
+                <ScalarProperty Name="VOL_ID" ColumnName="VOL_ID" />
+                <ScalarProperty Name="VOL_CODE" ColumnName="VOL_CODE" />
+                <ScalarProperty Name="VOL_PLACES_DISP" ColumnName="VOL_PLACES_DISP" />
+                <ScalarProperty Name="VOL_ID_VILLE_DEP" ColumnName="VOL_ID_VILLE_DEP" />
+                <ScalarProperty Name="VOL_ID_VILLE_ARR" ColumnName="VOL_ID_VILLE_ARR" />
+                <ScalarProperty Name="LIB_VOL" ColumnName="LIB_VOL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="AirlinesModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="AirlinesModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="AirlinesModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="AirlinesModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AirlinesModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="AirlinesModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AirlinesModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="AirlinesModel.Store.sp_renamediagram" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

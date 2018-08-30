@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3DEB014F-377D-4AAA-B049-E638642CF85D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Entities</RootNamespace>
-    <AssemblyName>Entities</AssemblyName>
+    <ProjectGuid>{1ACE2CC4-081A-4C2A-BE76-5A10CB615270}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>BusinessLayer</RootNamespace>
+    <AssemblyName>BusinessLayer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,11 +46,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="BLClients.cs" />
+    <Compile Include="BLPlannings.cs" />
+    <Compile Include="BLReservations.cs" />
+    <Compile Include="BLTranches.cs" />
+    <Compile Include="BLVols.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DataAccessLayer.csproj">
+      <Project>{551906cc-854d-4c84-996f-4659d51ad1b9}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityClient\EntityClient.csproj">
+      <Project>{91953efb-758f-4c49-a8d6-2c781f1189f1}</Project>
+      <Name>EntityClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Exceptions\BusinessErrors.csproj">
+      <Project>{75b04502-9bf6-467a-a071-9b2ebe176846}</Project>
+      <Name>BusinessErrors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{f3d824f1-0ec8-4320-9c2e-729912d87808}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
