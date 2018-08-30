@@ -95,6 +95,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.cmbListeVolsReserves = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.btnRefreshModifs = new System.Windows.Forms.Button();
             this.tabsUser.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReservations)).BeginInit();
@@ -523,6 +524,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.btnRefreshModifs);
             this.tabPage1.Controls.Add(this.lblVolModif);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.label9);
@@ -698,6 +700,7 @@
             this.btnSupprimerReservation.TabIndex = 34;
             this.btnSupprimerReservation.Text = "Effacer Réservation";
             this.btnSupprimerReservation.UseVisualStyleBackColor = true;
+            this.btnSupprimerReservation.Click += new System.EventHandler(this.btnSupprimerReservation_Click);
             // 
             // label13
             // 
@@ -741,6 +744,7 @@
             this.cmbListeVolsReserves.Name = "cmbListeVolsReserves";
             this.cmbListeVolsReserves.Size = new System.Drawing.Size(121, 21);
             this.cmbListeVolsReserves.TabIndex = 29;
+            this.cmbListeVolsReserves.SelectedIndexChanged += new System.EventHandler(this.cmbListeVolsReserves_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -750,6 +754,16 @@
             this.label15.Size = new System.Drawing.Size(70, 13);
             this.label15.TabIndex = 28;
             this.label15.Text = "Vols réservés";
+            // 
+            // btnRefreshModifs
+            // 
+            this.btnRefreshModifs.Location = new System.Drawing.Point(525, 100);
+            this.btnRefreshModifs.Name = "btnRefreshModifs";
+            this.btnRefreshModifs.Size = new System.Drawing.Size(179, 43);
+            this.btnRefreshModifs.TabIndex = 55;
+            this.btnRefreshModifs.Text = "Rafraîchir";
+            this.btnRefreshModifs.UseVisualStyleBackColor = true;
+            this.btnRefreshModifs.Click += new System.EventHandler(this.btnRefreshModifs_Click);
             // 
             // MainMenu
             // 
@@ -841,5 +855,6 @@
         private System.Windows.Forms.Label lblOccupation;
         private System.Windows.Forms.Label lblNbPassagers;
         private System.Windows.Forms.TextBox txtVolRetour;
+        private System.Windows.Forms.Button btnRefreshModifs;
     }
 }

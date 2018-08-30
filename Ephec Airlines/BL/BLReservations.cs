@@ -64,5 +64,16 @@ namespace BusinessLayer {
             }
             return res;
         }
+
+        // Delete une réservation avec Id
+        public static void DeleteResId(int pResId) {
+            EFReservation oEf = new EFReservation();
+            try {
+                oEf.DeleteResId(pResId);
+            }
+            catch (Exception ex) {
+                throw ex;
+            }
+        }
     }
 }

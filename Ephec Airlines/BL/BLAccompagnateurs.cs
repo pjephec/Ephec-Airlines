@@ -19,6 +19,7 @@ namespace BusinessLayer {
             }
             return res;
         }
+
         // Insertion d'un voyageur sans prénom
         public int InsertVoyageur(string pNom, DateTime date, int pResId) {
             int res = -1;
@@ -31,6 +32,31 @@ namespace BusinessLayer {
             return res;
         }
 
+        // Get tous les voyageurs et leurs données via un id d'une réservation
+        public static DataView GetVoyageursAvecPrixData(int pResId) {
+            DataView dataView = new DataView();
+            EFAccompagnateur oEf = new EFAccompagnateur();
+            try {
+                dataView = EFAccompagnateur.GetVoyageursAvecPrixData(pResId);
+            }
+            catch (Exception ex) {
+                throw ex;
+            }
+            return dataView;
+        }
+
+        // Get une liste de voyageurs 
+        public static List<ACC_GetAccompagnateurChiffreParTete_Result> GetVoyageursAvecPrix(int pResId) {
+            List<ACC_GetAccompagnateurChiffreParTete_Result> oList = new List<ACC_GetAccompagnateurChiffreParTete_Result>();
+            try {
+                oList = EFAccompagnateur.GetVoyageursAvecPrix(pResId);
+            }
+            catch (Exception ex) {
+                throw ex;
+            }
+            return oList;
+        }
+
         /*public void GetVoyageurs(ref List<ACC_GetAccompagnateursWithPrice_Result> oList, int pResId) {
             EFAccompagnateur oEf = new EFAccompagnateur();
             try {
@@ -39,29 +65,6 @@ namespace BusinessLayer {
             catch (Exception ex) {
                 throw ex;
             }
-        }
-
-        public void GetVoyageursAvecPrix(ref List<ACC_GetAccompagnateurChiffreParTete_Result> oList, int pResId) {
-
-            EFAccompagnateur oEf = new EFAccompagnateur();
-            try {
-                oList = EFAccompagnateur.GetVoyageursAvecPrix(pResId);
-            }
-            catch (Exception ex) {
-                throw ex;
-            }
-        }
-
-        public void GetVoyageursAvecPrixData(ref DataView oData, int pResId) {
-            DataViw 
-            EFAccompagnateur oEf = new EFAccompagnateur();
-            try {
-                oData = EFAccompagnateur.GetVoyageursAvecPrixData(pResId);
-            }
-            catch (Exception ex) {
-                throw ex;
-            }
-            return 
         }
 
         public void DeleteVoyageur(int pVoyId) {

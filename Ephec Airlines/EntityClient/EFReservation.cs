@@ -139,6 +139,45 @@ namespace EntityClient {
             }
         }
 
-
+        public void DeleteResId(int ResId) //delete la relation AR si existante puis les voyageurs
+        {
+            int? ArId = null;
+            using (AirlinesEntities context = new AirlinesEntities()) {
+                try {
+                    ArId = context.AR_GetArId(ResId).FirstOrDefault(); //verifie si relation AR existe
+                    if (ArId != null) {
+                        context.AR_DeleteARById(ArId); //supprime la relation si existe
+                    }
+                    context.ACC_DeleteByResId(ResId); //supprime les voyageurs
+                    context.RES_DeleteResId(ResId); // supprime la réservation
+                }
+                catch (EntityException efEx) {
+                    SqlException sqEx = (SqlException)efEx.InnerException;
+                    int numErreur = 666;
+                    switch (sqEx.Number) {
+                        case 2601:
+                            numErreur = 3;
+                            break;
+                        case 51000:
+                            numErreur = 4;
+                            break;
+                        case 52000:
+                            numErreur = 7;
+                            break;
+                        case 53000:
+                            numErreur = 3;
+                            break;
+                        default:
+                            numErreur = 666;
+                            // sMessage = exSQL.Number + " - " + exSQL.Message;
+                            break;
+                    }
+                    throw new CustomError(numErreur);
+                }
+                catch (Exception Ex) {
+                    throw Ex;
+                }
+            }
+        }
     }
 }
