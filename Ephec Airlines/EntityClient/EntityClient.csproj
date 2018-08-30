@@ -92,6 +92,8 @@
     <Compile Include="CLI_SelectAll_Result.cs">
       <DependentUpon>ClientSecure.tt</DependentUpon>
     </Compile>
+    <Compile Include="EFAccompagnateur.cs" />
+    <Compile Include="EFAllerRetour.cs" />
     <Compile Include="EFClient.cs" />
     <Compile Include="EFPlanning.cs" />
     <Compile Include="EFReservation.cs" />

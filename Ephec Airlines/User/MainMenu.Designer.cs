@@ -34,6 +34,7 @@
             this.lblVols = new System.Windows.Forms.Label();
             this.dataGridViewReservations = new System.Windows.Forms.DataGridView();
             this.tabDetails = new System.Windows.Forms.TabPage();
+            this.txtVolRetour = new System.Windows.Forms.TextBox();
             this.dateTimePickerVoyageur5 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerVoyageur4 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerVoyageur3 = new System.Windows.Forms.DateTimePicker();
@@ -94,7 +95,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.cmbListeVolsReserves = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtVolRetour = new System.Windows.Forms.TextBox();
             this.tabsUser.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReservations)).BeginInit();
@@ -203,6 +203,14 @@
             this.tabDetails.Size = new System.Drawing.Size(860, 575);
             this.tabDetails.TabIndex = 1;
             this.tabDetails.Text = "Ajouter Vol";
+            // 
+            // txtVolRetour
+            // 
+            this.txtVolRetour.Location = new System.Drawing.Point(107, 136);
+            this.txtVolRetour.Name = "txtVolRetour";
+            this.txtVolRetour.Size = new System.Drawing.Size(260, 20);
+            this.txtVolRetour.TabIndex = 67;
+            this.txtVolRetour.TextChanged += new System.EventHandler(this.txtVolRetour_TextChanged);
             // 
             // dateTimePickerVoyageur5
             // 
@@ -337,6 +345,7 @@
             this.btnSubmit.TabIndex = 50;
             this.btnSubmit.Text = "Soumettre";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // lblCADetails
             // 
@@ -482,6 +491,7 @@
             this.cmbDateVolAller.Name = "cmbDateVolAller";
             this.cmbDateVolAller.Size = new System.Drawing.Size(121, 21);
             this.cmbDateVolAller.TabIndex = 7;
+            this.cmbDateVolAller.SelectedIndexChanged += new System.EventHandler(this.cmbDateVolAller_SelectedIndexChanged);
             // 
             // cmbVolAller
             // 
@@ -740,14 +750,6 @@
             this.label15.Size = new System.Drawing.Size(70, 13);
             this.label15.TabIndex = 28;
             this.label15.Text = "Vols réservés";
-            // 
-            // txtVolRetour
-            // 
-            this.txtVolRetour.Enabled = false;
-            this.txtVolRetour.Location = new System.Drawing.Point(107, 136);
-            this.txtVolRetour.Name = "txtVolRetour";
-            this.txtVolRetour.Size = new System.Drawing.Size(260, 20);
-            this.txtVolRetour.TabIndex = 67;
             // 
             // MainMenu
             // 

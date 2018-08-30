@@ -40,12 +40,7 @@ namespace BusinessLayer
         }
         
         public static VOL_SelectAllListChoixRetour_Result GetVolRetour(int pVolIDep, int pVolIdRet) {
-            try {
-                return EFVol.GetVolRetour(pVolIDep, pVolIdRet);
-            }
-            catch (Exception ex) {
-                throw ex;
-            }
+            return EFVol.GetVolRetour(pVolIDep, pVolIdRet);
         }
     }
 }

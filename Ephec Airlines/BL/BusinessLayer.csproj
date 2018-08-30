@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLAccompagnateurs.cs" />
+    <Compile Include="BLAllerRetours.cs" />
     <Compile Include="BLClients.cs" />
     <Compile Include="BLPlannings.cs" />
     <Compile Include="BLReservations.cs" />
