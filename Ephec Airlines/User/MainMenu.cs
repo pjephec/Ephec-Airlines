@@ -43,7 +43,6 @@ namespace User
                 MessageBox.Show(cEx.Message);
             }
             catch (Exception ex) {
-
                 throw new CustomError(666);
             }
         }
@@ -66,9 +65,7 @@ namespace User
                 CustomError cEx = new CustomError(666);
             }
         }
-
-
-
+        
         private void radioAllerRetour_CheckedChanged(object sender, EventArgs e) {
             if (radioAllerRetour.Checked) {
                 txtVolRetour.Enabled = true;
@@ -84,12 +81,11 @@ namespace User
 
         private void cmbVolAller_SelectedIndexChanged(object sender, EventArgs e) {
             VOL_SelectAllListChoix_Result oVol = (VOL_SelectAllListChoix_Result)cmbVolAller.SelectedItem;
-            BLVols oBlVol = new BLVols();
             List<PLA_GetDateByVolId_Result> oList = new List<PLA_GetDateByVolId_Result>();
             try {
                 cmbDateVolAller.DataSource = BLPlannings.GetDatesVol(oVol.VOL_ID); // on récupère les dates pour le vol choisi
-                cmbDateVolAller.ValueMember = "PLA_ID";
-                cmbDateVolAller.DisplayMember = "PLA_DATE_VOL";
+                cmbDateVolAller.ValueMember = "PLAN_ID";
+                cmbDateVolAller.DisplayMember = "PLAN_VOL_DATE";
                 if (radioAllerRetour.Checked) //si le vol retour est choisi
                 {
                     VOL_SelectAllListChoixRetour_Result oVolRetour = BLVols.GetVolRetour(oVol.VOL_ID_VILLE_ARR, oVol.VOL_ID_VILLE_DEP); //récup vol retour
@@ -103,10 +99,6 @@ namespace User
                 CustomError cEx = new CustomError(666);
                 MessageBox.Show(cEx.Message);
             }
-        }
-
-        private void tabDetails_Click(object sender, EventArgs e) {
-
         }
 
 

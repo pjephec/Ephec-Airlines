@@ -203,7 +203,6 @@
             this.tabDetails.Size = new System.Drawing.Size(860, 575);
             this.tabDetails.TabIndex = 1;
             this.tabDetails.Text = "Ajouter Vol";
-            this.tabDetails.Click += new System.EventHandler(this.tabDetails_Click);
             // 
             // dateTimePickerVoyageur5
             // 
